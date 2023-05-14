@@ -1,0 +1,28 @@
+// CSS for the Footer component in components/Footer.tsx.
+
+@import "scss/variables";
+
+.wrap {
+	margin: 0 auto;
+	max-width: $content-width-extended;
+	padding: 0 10px;
+}
+
+@media screen and (min-width: $content-width-extended) {
+	.wrap {
+		padding: 0;
+	}
+}
+
+footer.main {
+	background: $color-primary;
+	padding: 40px 0;
+	
+}
+
+footer.main p{
+	color: $color-white;
+	margin: 0;
+	font-family: 'AvenirBook';
+	font-size: 15px;
+}

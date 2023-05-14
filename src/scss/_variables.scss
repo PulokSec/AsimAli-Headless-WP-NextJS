@@ -1,0 +1,42 @@
+$color-primary: #12143a;
+$color-secondary: #f0b254;
+$color-black: #12143a;
+$color-white: #fff;
+$color-dark-gray: #1f1f1f;
+$color-light-gray: #f2f2f2;
+$color-mid-gray: #606060;
+
+// $color-secondary: #8F682E;
+
+
+@font-face {
+    font-family: 'DejavuSans';
+    src: url('dejavu-sans.book.ttf');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'AvenirBlack';
+    src: url('AvenirLTStd-Black.otf');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'AvenirBook';
+    src: url('AvenirLTStd-Book.otf');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'AvenirRoman';
+    src: url('AvenirLTStd-Roman.otf');
+    font-display: swap;
+}
+
+
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'dejavusans';
+$font-weight-normal: 300;
+$font-weight-bold: 600;
+
+$content-width: 1200px;
+$content-width-extended: 1400px;
+
+$breakpoint-small: 600px;
+$breakpoint-medium: 1000px;

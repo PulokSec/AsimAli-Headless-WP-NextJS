@@ -1,0 +1,1974 @@
+// CSS for use on every page. Added with normalize.css in pages/_app.tsx.
+
+@import "variables"; 
+@import "typography";
+
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow-right {
+  position: absolute;
+  right: -8px;
+}
+button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-right, button.react-multiple-carousel__arrow svg.svg-inline--fa.fa-chevron-left  {
+  font-size: 10px !important;
+  color: $color-secondary;
+  width: 19px;
+  display: block;
+}
+.hero-title-col {
+  position: relative;
+  &:after {
+    position: absolute;
+    overflow: hidden;
+    width: 70%;
+    height: 3px;
+    content: " ";
+    background-color: $color-secondary;
+    right: -30%;
+    top: 25%;
+  }
+  &:before {
+    position: absolute;
+    overflow: hidden;
+    width: 70%;
+    height: 3px;
+    content: " ";
+    background-color: $color-secondary;
+    right: 105%;
+    bottom: 28%;
+  }
+  .hero-title {
+    font-size: 72px;
+    font-family: "AvenirBook";
+
+    span {
+      font-family: "AvenirBlack";
+      color:$color-secondary;
+      display: block;
+      font-weight: 900;
+    }
+  }
+}
+.hero-title-post {
+  position: relative;
+  .hero-title {
+    font-size: 50px;
+    font-family: "AvenirBook";
+
+    span {
+      font-family: "AvenirBlack";
+      color:$color-secondary;
+      display: block;
+      font-weight: 900;
+    }
+  }
+}
+.banner-bottom{
+  .heading{
+    font-size: 35px;
+  }
+}
+.content a {
+  color: $color-secondary !important;
+  text-decoration: none !important;
+}
+.card-body a {
+  color: $color-black;
+  text-decoration: none;
+}
+body {
+  color: $color-black;
+  font-size: 18px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  // .preloader {
+  // 	background: $color-primary;
+  // 	width: 100%;
+  // 	height: 100%;
+  // 	z-index: 99;
+  // 	position: fixed;
+  // 	text-align: center;
+  // 	display: flex;
+  // 	justify-content: center;
+  // 	align-items: center;
+  // }
+}
+.navbar-nav {
+  ul {
+    list-style: none;
+    display: flex;
+    margin-top: revert;
+    li {
+      position: relative;
+      &:hover {
+        ul.submenu {
+          display: block;
+        }
+      }
+      ul.submenu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        z-index: 99;
+        width: 240px;
+        display: none;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        li {
+          span.sublink {
+            padding: 13px;
+            display: block;
+            cursor: pointer;
+            margin: 0;
+            border-bottom: 2px solid $color-secondary;
+            &:hover {
+              background: $color-secondary;
+              color: $color-white;
+            }
+            &:before {
+              display: none;
+            }
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  span.link {
+    // font-family: 'AvenirBook';
+    cursor:pointer;
+    text-transform: uppercase;
+    margin-left: 16px;
+    text-decoration: none;
+    color: $color-primary;
+    font-size: 13px;
+    border-bottom: 2px solid transparent;
+    padding: 4px 0;
+    position: relative;
+    font-weight: 800;
+    display: block;
+    text-align: center;
+    &:hover {
+      // font-family: 'AvenirBlack';
+      border-bottom: 2px solid $color-secondary;
+      color: $color-primary;
+      &:before {
+        border-top: 2px solid $color-secondary;
+        border-right: 2px solid $color-secondary;
+        width: 30px;
+        height: 30px;
+        content: " ";
+        display: block;
+        background-color: transparent;
+        transform: rotate(-44deg) skew(10deg, 10deg);
+        position: absolute;
+        top: -14px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+  }
+}
+
+.wrap {
+  margin: 0 auto;
+  max-width: $content-width;
+  overflow: auto;
+  padding: 0 10px;
+}
+
+.content-page .wrap,
+.content-single .wrap,
+.content-index .wrap {
+  padding: 55px 10px;
+}
+
+@media screen and (min-width: $content-width) {
+  .wrap {
+    padding: 0;
+  }
+
+  .content-page .wrap,
+  .content-single .wrap,
+  .content-index .wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.home-slider {
+  .carousel-indicators {
+    position: absolute;
+    right: inherit;
+    bottom: 15%;
+    left: 0;
+  }
+  .carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    background-color: $color-white;
+    opacity: 1;
+    border: 5px solid transparent;
+    outline: 1px solid $color-white;
+  }
+  .carousel-indicators .active {
+    width: 12px;
+    height: 12px !important;
+    background-color: $color-secondary;
+    position: relative;
+    top: -1px;
+    opacity: 1;
+    border: 5px solid transparent;
+    outline: 1px solid $color-secondary;
+  }
+}
+
+.wehelp_section {
+  padding: 80px 0;
+  position: relative;
+  &:before {
+    content: "";
+
+    background-image: url(/images/we-help-bg.webp);
+    background-repeat: no-repeat;
+    background-size: 350px auto;
+    background-position: bottom left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 610px;
+    height: 905px;
+  }
+  .wehelp_image {
+    width: 90%;
+  }
+  .col:nth-child(2) {
+    display: flex;
+    align-items: center;
+  }
+  .wehelp_text {
+    p.wehelp_title {
+      font-family: "AvenirBook";
+      font-size: 80px;
+      position: relative;
+      left: -90px;
+      :after {
+        position: absolute;
+        top: 26%;
+        overflow: hidden;
+        width: 60%;
+        height: 3px;
+        content: " ";
+        background-color: $color-secondary;
+        margin-left: 10%;
+      }
+      span {
+        font-family: "AvenirBlack";
+        display: block;
+        color: $color-secondary;
+      }
+    }
+    .wehelp_description {
+     h1,p{
+      font-family: "AvenirBook";
+      font-size: 16px;
+     }
+    }
+  }
+}
+
+.team_section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 600px;
+  position: relative;
+  h1 {
+    font-family: "AvenirBook";
+    padding: 50px;
+    font-size: 70px;
+    color: $color-white;
+    position: absolute;
+    top: 40px;
+    &:after {
+      position: absolute;
+      top: 45%;
+      overflow: hidden;
+      width: 20%;
+      height: 3px;
+      content: " ";
+      background-color: $color-secondary;
+      left: -17%;
+    }
+    span {
+      font-family: "AvenirBlack";
+      color: $color-secondary;
+    }
+  }
+}
+
+.meeting_section {
+  padding: 80px 0;
+  h2 {
+    font-family: "AvenirBook";
+    font-size: 70px;
+    color: $color-black;
+    position: relative;
+    :after {
+      position: absolute;
+      overflow: hidden;
+      width: 20%;
+      height: 3px;
+      content: " ";
+      background-color: $color-secondary;
+      top: 34%;
+    }
+    span {
+      font-family: "AvenirBlack";
+      color: $color-secondary;
+      display: block;
+    }
+  }
+}
+.split_section {
+  .row {
+    align-items: center;
+  }
+  .split_text {
+    h3 {
+      font-family: "AvenirBook";
+      font-size: 70px;
+      color: $color-black;
+      position: relative;
+      span {
+        font-family: "AvenirBlack";
+        color: $color-secondary;
+        display: block;
+      }
+    }
+    .SplitBtn {
+      background: transparent;
+      border: 2px solid $color-black;
+      text-transform: uppercase;
+      font-family: "AvenirBook";
+      font-size: 25px;
+      color: $color-black;
+      border-radius: 0;
+      span {
+        color: $color-secondary;
+        font-family: "AvenirBlack";
+      }
+      &:hover {
+        background: transparent;
+        border: 2px solid $color-secondary;
+        color: $color-black;
+        opacity: 0.5;
+      }
+    }
+  }
+  .flex-row-reverse {
+    .split_image {
+      width: 80%;
+      float: right;
+    }
+  }
+  .split_image {
+    width: 80%;
+  }
+}
+
+// footer style
+
+footer {
+  .wrap {
+    width: 60%;
+    h3 {
+      color: $color-white;
+      font-family: "AvenirBook";
+      span {
+        color: $color-secondary;
+      }
+    }
+    a {
+      display: block;
+      text-decoration: none;
+      color: $color-white !important;
+      font-family: "AvenirBook";
+      font-size: 15px;
+    }
+
+    .footer-logo {
+      width: 83%;
+      margin: auto;
+      text-align: center;
+    }
+    .row {
+      div:nth-child(3) {
+        text-align: right;
+      }
+    }
+    .footer-menu {
+      ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        span{
+          float: left;
+          overflow: hidden;
+          margin-right: 15px;
+          li{
+            span.link{
+              &:hover{
+                color: #fff !important;
+              }
+            }
+
+          }
+          .submenu{
+            display: none;
+          }
+        }
+       
+      }
+    }
+
+    .social-url {
+      position: relative;
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        li {
+          margin: 10px 10px;
+          a {
+            font-size: 20px;
+          }
+        }
+      }
+
+      :before {
+        position: absolute;
+        overflow: hidden;
+        width: 30%;
+        height: 1px;
+        content: " ";
+        background-color: #fff;
+        top: 46%;
+        left: 9%;
+      }
+      :after {
+        position: absolute;
+        overflow: hidden;
+        width: 30%;
+        height: 1px;
+        content: " ";
+        background-color: #fff;
+        top: 46%;
+        right: 9%;
+      }
+    }
+    .copyright-text {
+      text-align: center;
+      font-family: "AvenirBook";
+      color: $color-white;
+      margin: 0;
+      a{
+        display: inline;
+      }
+    }
+  }
+}
+.cta_section .cta_first{
+  height: 90vh
+}
+.cta_section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 30px 0;
+  .cta_text {
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+    top: -120px;
+    .ctaBtn {
+      background: $color-black;
+      border-radius: unset;
+      padding: 5px 30px;
+      font-size: 20px;
+      border: none;
+    }
+  }
+  p {
+    font-family: "AvenirBook";
+    font-size: 40px;
+    color: $color-black;
+    span {
+      font-family: "AvenirBlack";
+      color: $color-secondary;
+    }
+  }
+}
+
+.faq_section {
+  background-repeat: no-repeat;
+  background-size: 84% auto;
+  background-position: left center;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  margin: 50px 0;
+  justify-content: flex-end;
+  align-items: flex-start;
+  .faq_text {
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+    left: -70px;
+    top: 65px;
+    position: relative;
+    &:before {
+      position: absolute;
+      top: 26%;
+      overflow: hidden;
+      width: 40%;
+      height: 3px;
+      content: " ";
+      background-color: #f0b254;
+      margin-left: 50%;
+    }
+    &:after {
+      position: absolute;
+      bottom: -85%;
+      overflow: hidden;
+      width: 120%;
+      height: 3px;
+      content: " ";
+      background-color: #f0b254;
+      margin-left: -11%;
+      transform: rotate(90deg);
+    }
+  }
+  span.faq-span {
+    font-family: "AvenirBook";
+    font-size: 60px;
+    color: $color-black;
+    margin: 0;
+    font-weight: 100;
+        display: block;
+    span {
+      font-family: "AvenirBlack";
+      color: $color-secondary;
+    }
+  }
+}
+.faq-accordion {
+  padding-bottom: 50px;
+  .accordion {
+    a {
+      color: $color-secondary;
+      text-decoration: none;
+    }
+    .accordion-item {
+      border: none;
+      &:first-of-type {
+        .accordion-button {
+          border-top-left-radius: none;
+          border-top-right-radius: none;
+        }
+      }
+      .accordion-header {
+        border-bottom: 1px solid $color-mid-gray;
+        .accordion-button {
+          font-family: "AvenirBook";
+          color: $color-black;
+          font-size: 25px;
+          font-weight: 100;
+          &:not(.collapsed) {
+            background-color: transparent !important;
+          }
+          &:focus {
+            background-color: transparent !important;
+            border-color: transparent;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.gallery_section {
+  img {
+    transition-duration: 0.3s;
+    &:hover {
+      filter: grayscale(1);
+      cursor: pointer;
+    }
+  }
+}
+
+.flexability-slider {
+  position: relative;
+  overflow: hidden;
+  padding: 50px 0;
+  .carousel-inner {
+    position: relative;
+    width: 90%;
+    overflow: hidden;
+    margin: auto;
+  }
+  .carouselcaption {
+    position: absolute;
+    right: 15%;
+    bottom: 1.25rem;
+    left: 15%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: center;
+    height: 100%;
+    left: 8px;
+    .bannerCaption {
+      position: relative;
+      z-index: 99;
+      padding: 20px 80px;
+      margin-top: 80px;
+      .sliderTitle {
+        text-transform: uppercase;
+        font-family: "AvenirBook";
+        font-weight: 200;
+        margin: 0;
+        font-size: 80px;
+        &:after {
+          position: absolute;
+          top: 20%;
+          overflow: hidden;
+          width: 20%;
+          height: 3px;
+          content: " ";
+          background-color: $color-secondary;
+          left: -8%;
+        }
+      }
+      .sliderSubtitle {
+        text-transform: uppercase;
+        font-family: "AvenirBook";
+        font-weight: 200;
+        margin: 0;
+        font-size: 30px;
+      }
+      p {
+        margin-top: 50px;
+      }
+      button {
+        background-color: transparent;
+        border: 1px solid $color-white;
+        text-transform: uppercase;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+
+    &:before {
+      width: 50%;
+      height: 0%;
+      position: absolute;
+      top: 0;
+      left: -2%;
+      overflow: visible;
+      border-top: 1200px solid rgba(18, 20, 58, 0.8);
+      border-left: 0 solid transparent;
+      border-right: 250px solid transparent;
+      content: "";
+    }
+  }
+  .carousel-control-next {
+    position: absolute;
+    top: inherit;
+    bottom: 9%;
+    border: 1px solid #fff;
+    width: 3%;
+    left: 12%;
+    height: 6%;
+  }
+  .carousel-control-prev {
+    position: absolute;
+    top: inherit;
+    bottom: 9%;
+    border: 1px solid #fff;
+    width: 3%;
+    left: 8%;
+    height: 6%;
+  }
+}
+
+.partnerLogo {
+  margin: 20px 0 100px 0;
+  .react-multiple-carousel__arrow {
+    background-color: transparent;
+    &:before {
+      color: $color-secondary;
+    }
+    &:hover {
+      background: transparent;
+    }
+  }
+  .react-multiple-carousel__arrow--left {
+    left: calc(0% + -15px);
+  }
+  .react-multiple-carousel__arrow--right {
+    right: calc(0% + -15px);
+  }
+}
+
+// contact us page
+
+.contact-page{
+  h1, h2{
+    font-size: 25px;
+  }
+}
+
+.contact-item:first-of-type {
+  margin-top: 38px;
+}
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 2px solid $color-secondary;
+  text-align: center;
+  position: absolute;
+  left: 0;
+}
+.contact-icon svg {
+  font-size: 23px;
+  color: $color-secondary;
+  line-height: 33px;
+  margin-top: 11px;
+  height: 25px;
+}
+
+.contact-item h6 {
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+}
+.contact-item p,
+.contact-item span,
+.contact-item a {
+  font-size: 16px;
+  color: $color-secondary;
+  text-decoration: none;
+}
+.contact-item {
+  position: relative;
+  padding-left: 70px;
+  padding-top: 5px;
+  margin-top: 30px;
+}
+.contact-row {
+  margin-left: -8px;
+  margin-right: -8px;
+  label {
+    text-transform: capitalize;
+  }
+  .contact-title {
+    padding: 23px 10px;
+    font-size: 25px;
+  }
+}
+.contact-name,
+.contact-email {
+  padding: 0 8px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+select,
+textarea {
+  position: relative;
+  height: 47px;
+  line-height: 47px;
+  border: 2px solid #e3e3e3;
+  background-color: transparent;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  color: #7a7a7a;
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  -ms-transition: border-color 0.3s ease-in-out;
+  -o-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border-radius: 3px;
+}
+textarea#comment {
+  height: 190px;
+  padding: 0 16px;
+  margin-bottom: 25px;
+}
+
+.contactBtn {
+  background: transparent !important;
+  border: 2px solid $color-black !important;
+  text-transform: uppercase;
+  font-family: "AvenirBook";
+  font-size: 18px;
+  padding: 10px 15px 6px 15px;
+  color: $color-black !important;
+  border-radius: 7px;
+  span {
+    color: $color-secondary;
+    font-family: "AvenirBlack";
+  }
+  &:hover {
+    background: $color-primary !important;
+    border: 2px solid $color-secondary;
+    color: $color-white !important;
+  }
+  &.selected {
+    background: $color-primary !important;
+    color: $color-white !important;
+    border: 2px solid $color-primary;
+  }
+}
+.button-apply{
+  button{
+    text-transform: uppercase;
+    border-radius: 0;
+    background-color: $color-primary;
+    border: 1px solid transparent;
+  }
+}
+.howto-application {
+  background-repeat: no-repeat;
+  // background-size: 120% 100%;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  position: relative;
+  padding: 0;
+  .overlay{
+    	background-color:  rgba(0,0,0,0.7);
+    	width: 100%;
+    	height: 100%;
+    	position: absolute;
+    	overflow: hidden;
+  }
+  input{
+    background-color: $color-white;
+  }
+  input[type=submit]{
+    background-color: #3587cb;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    left: 0;
+    right: 0;
+    border: 1px solid transparent;
+    color: #fff;
+    padding: 10px 33px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+  h2{
+    margin-top: 50px;
+  }
+  h2, p{
+    color: $color-white;
+    z-index: 999;
+    position: relative;
+    text-align: center;
+  }
+}
+
+.blog-container {
+  .blogImage {
+    img {
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        transform: scale(1.2) rotate(-2deg);
+      }
+    }
+  }
+  .card-title {
+    cursor: pointer;
+
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+  .blog-content {
+    overflow: hidden;
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+  }
+
+  .readMoreBtn {
+    background: transparent !important;
+    border: 2px solid $color-black !important;
+    text-transform: uppercase;
+    font-family: "AvenirBook";
+    font-size: 18px;
+    padding: 10px 15px 6px 15px;
+    color: $color-black !important;
+    border-radius: 7px;
+    span {
+      color: $color-secondary;
+      font-family: "AvenirBlack";
+    }
+    &:hover {
+      background: $color-primary !important;
+      border: 2px solid $color-secondary;
+      color: $color-white !important;
+    }
+  }
+}
+
+.currentRate {
+  .current-rate{
+    position: relative;
+    top: -103px;
+    table{
+      tbody{
+        tr:nth-child(odd){
+          background: #f0b25430;
+
+        }
+      }
+    }
+  }
+  .notes {
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+  .current-container{
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    background: $color-white;
+    z-index: 999;
+    display: block;
+    position: relative;
+    border-radius: 30px 30px 0 0;
+    padding: 6px 0;
+    p{
+      margin: 0;
+    }
+    table{
+      border-top: 2px solid $color-secondary;
+    }
+    h1{
+      font-family: 'Oswald', sans-serif;
+      margin-bottom: 30px;
+    }
+    .contactBtn{
+      position: relative;
+      z-index: 999;
+      background: #f0b254 !important;
+      border: 2px solid transparent !important;
+      text-transform: uppercase;
+      font-family: "AvenirBook";
+      font-size: 15px;
+      padding: 10px 20px 6px 20px;
+      color: #12143a !important;
+      border-radius: 15px 15px 0  15px;
+    }
+  }
+  .easy-application {
+    background-repeat: no-repeat;
+    // background-size: 120% 100%;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    position: relative;
+    padding: 0;
+
+    .overlay {
+    	background-image: linear-gradient(to right, rgba(18, 20, 58, 1) , rgba(0,0,0,0)) ;
+    	width: 100%;
+    	height: 100%;
+    	position: absolute;
+    	overflow: hidden;
+    }
+    .easyapplication-title{
+      z-index: 999;
+      position: relative;
+      padding-top: 20px;
+      h2{
+        color: $color-white;
+        font-family: 'Oswald', sans-serif;
+      }
+      p {
+        color: $color-secondary;
+        margin-bottom: 0;
+      }
+    }
+   
+    .application-container {
+      
+      padding: 5px 0;
+      margin: auto;
+      z-index: 9999;
+
+      input {
+        background: $color-white;
+      }
+      .contactBt {
+        position: relative;
+        z-index: 999;
+        background: $color-secondary !important;
+        border: 2px solid transparent !important;
+        text-transform: uppercase;
+        font-family: "AvenirBook";
+        font-size: 15px;
+        padding: 10px 20px 6px 20px;
+        color: $color-black !important;
+        border-radius: 15px 15px 15px 0;  
+      }
+    }
+  }
+}
+.calculator-cta{
+  width: 50%;
+  margin: 30px auto;
+  padding: 30px 0;
+  text-align: center;
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    color: $color-black;
+    margin-bottom: 30px;
+    position: relative;
+    &:after{
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 3px;
+    content: " ";
+    background-color: #f0b254;
+    right: 0;
+    bottom: -31%;
+    
+    }
+  }
+  .contactBtn {
+    background: $color-secondary !important;
+    border: 1px solid transparent !important;
+    text-transform: uppercase;
+    font-family: "AvenirBook";
+    font-size: 15px;
+    padding: 10px 15px 6px 15px;
+    color: $color-black !important;
+    border-radius: 0px 0px 15px 15px;
+    cursor: ponter;
+   
+    
+  }
+}
+.pagination {
+  margin: 50px auto;
+  justify-content: center;
+  button {
+    padding: 5px 18px;
+    margin: 10px;
+  }
+}
+
+.our-services {
+  .slide-text {
+    border: 1px solid $color-secondary;
+    margin: 13px;
+    padding: 20px;
+    text-align: center;
+    color: $color-primary;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      font-size: 15px;
+      font-family: "AvenirBlack";
+      color: $color-primary !important;
+    }
+    &:hover {
+      background: $color-primary;
+      border: 1px solid $color-primary;
+      cursor: pointer;
+      a {
+        color: $color-secondary !important;
+      }
+    }
+  }
+  .react-multiple-carousel__arrow {
+    background-color: transparent;
+    &:before {
+      color: $color-secondary;
+    }
+    &:hover {
+      background: transparent;
+    }
+  }
+  .react-multiple-carousel__arrow--left {
+    left: calc(0% + -15px);
+  }
+  .react-multiple-carousel__arrow--right {
+    right: calc(0% + -15px);
+  }
+  .refinance-text {
+    margin-top: 50px;
+    div:nth-child(2) {
+      display: flex;
+      align-items: flex-end;
+    }
+    p{
+      font-size: 70px;
+      font-family: "AvenirBook";
+      position: relative;
+      &:after {
+        position: absolute;
+        overflow: hidden;
+        width: 70%;
+        height: 3px;
+        content: " ";
+        background-color: $color-secondary;
+        left: 105%;
+        top: 25%;
+      }
+      span {
+        font-family: "AvenirBlack";
+        color: $color-secondary;
+        display: block;
+        font-weight: 900;
+      }
+    }
+  }
+  .service-text {
+    background: #eee;
+    padding: 30px;
+    margin-top: 50px;
+  }
+  .service-container {
+    .service-row:nth-child(odd) {
+      background-color: $color-primary;
+      text-align: left;
+      .row{
+        flex-direction: row-reverse;
+        display: flex;
+        h2 {
+          color: $color-white;
+          font-size: 22px;
+        }
+        h3{
+          color: $color-white;
+          font-size: 22px;
+        }
+        p {
+          color: $color-white;
+          a {
+            color: $color-white !important;
+          }
+        }
+      }
+    }
+    .service-row:nth-child(even) {
+      h2 {
+        color: $color-primary;
+        font-size: 22px;
+      }
+      p {
+        color: $color-primary;
+        a {
+          color: $color-primary !important;
+        }
+      }
+    }
+    .service-image {
+      span {
+        width: 100% !important;
+        img {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+}
+.our-locations {
+  .location-heading {
+    margin-top: 50px;
+    button {
+      background: transparent !important;
+      border: 2px solid transparent !important;
+      text-transform: uppercase;
+      font-family: "AvenirBlack";
+      font-weight: 800;
+      font-size: 25px;
+      padding: 10px 15px 6px 15px;
+      color: $color-secondary !important;
+      border-radius: 0px;
+      width: 100%;
+    }
+    button.active-button {
+      background: transparent !important;
+      border: 2px solid $color-primary !important;
+      text-transform: uppercase;
+      font-family: "AvenirBlack";
+      font-weight: 800;
+      font-size: 25px;
+      padding: 10px 15px 6px 15px;
+      color: $color-secondary !important;
+      border-radius: 0px;
+      width: 100%;
+    }
+    div:nth-child(2) {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    div:nth-child(3) {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    h1 {
+      font-size: 70px;
+      font-family: "AvenirBook";
+      position: relative;
+      &:after {
+        position: absolute;
+        overflow: hidden;
+        width: 70%;
+        height: 3px;
+        content: " ";
+        background-color: $color-secondary;
+        left: 22%;
+        top: 25%;
+      }
+      span {
+        font-family: "AvenirBlack";
+        color: $color-secondary;
+        display: block;
+        font-weight: 900;
+      }
+    }
+  }
+  .location-images {
+    margin-top: 30px !important;
+    .col {
+      position: relative;
+
+      &:hover div {
+        opacity: 1;
+      }
+      div {
+        transition-property: opacity;
+        transition-duration: 0.5s;
+        width: 86%;
+        height: 100%;
+        background: rgba(18, 20, 58, 0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        display: flex;
+        opacity: 0;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        cursor: pointer;
+
+        a {
+          color: $color-secondary;
+          text-transform: uppercase;
+          font-size: 40px;
+          font-family: "AvenirBlack";
+          font-weight: 900;
+          width: 100%;
+          p.verticall-location{
+            writing-mode: vertical-rl;
+            text-orientation: upright; 
+            margin: auto;
+            white-space: nowrap;
+          }
+          span {
+            display: block;
+          }
+        }
+      }
+    }
+    .col:nth-child(even) {
+      position: relative;
+      top: -100px;
+    }
+  }
+  .imageList {
+    margin-top: 250px;
+  }
+  .listMap {
+    margin-top: 100px;
+  }
+}
+.Bc-Coquitlam {
+  .refinance-text {
+    margin-top: 50px;
+    color: $color-primary;
+    div:nth-child(2) {
+      display: flex;
+      align-items: flex-end;
+    }
+    p {
+      font-size: 70px;
+      font-family: "AvenirBook";
+      position: relative;
+      &:after {
+        position: absolute;
+        overflow: hidden;
+        width: 70%;
+        height: 3px;
+        content: " ";
+        background-color: $color-secondary;
+        left: 50%;
+        top: 25%;
+      }
+      span {
+        font-family: "AvenirBlack";
+        color: $color-secondary;
+        display: block;
+        font-weight: 900;
+      }
+    }
+  }
+  .coquitlam-grid {
+    display: flex;
+    align-items: center;
+    color: $color-primary;
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      span {
+        font-family: "AvenirBlack";
+        color: $color-primary;
+        font-weight: 900;
+      }
+    }
+  }
+  .application-slider {
+    color: $color-primary;
+    margin: 80px 0;
+    padding: 50px 0;
+    border-top: 1px solid $color-secondary;
+    border-bottom: 1px solid $color-secondary;
+    .application-slide {
+      span{
+        font-size: 2rem;
+      }
+      p {
+        width: 90%;
+        margin: auto;
+        line-height: 30px;
+      }
+    }
+    .react-multiple-carousel__arrow {
+      background-color: transparent;
+      &:before {
+        color: $color-secondary;
+      }
+      &:hover {
+        background: transparent;
+      }
+    }
+    .react-multiple-carousel__arrow--left {
+      left: calc(0% + -15px);
+    }
+    .react-multiple-carousel__arrow--right {
+      right: calc(0% + -15px);
+    }
+  }
+  .product-service {
+    margin-bottom: 80px;
+    h2 {
+      color: $color-primary;
+      font-size: 20px;
+      font-weight: 600;
+      font-family: "AvenirBlack";
+      margin-bottom: 10px;
+    }
+    p {
+      color: $color-primary;
+      font-size: 14px;
+      font-weight: 200;
+      line-height: 25px;
+      font-family: "AvenirBook";
+    }
+  }
+  .apply-step {
+    margin-bottom: 80px;
+    div.col-md-4 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .apply {
+      background: $color-primary;
+      padding: 20px;
+      text-align: center;
+      color: $color-white;
+      position: relative;
+      z-index: auto;
+      width: 100%;
+      span{
+        font-size: 2rem;
+      }
+
+      .apply-border {
+        border: 1px solid $color-secondary;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(-10deg);
+        z-index: -999;
+      }
+      p{
+        font-size: 2rem;
+      }
+    }
+    .approved {
+      border: 1px solid $color-secondary;
+      padding: 20px;
+      text-align: center;
+      span{
+        font-size: 2rem;
+      }
+      p {
+        color: $color-primary;
+        font-size: 14px;
+        font-weight: 200;
+        line-height: 25px;
+        font-family: "AvenirBook";
+      }
+    }
+  }
+  .mortgage-broker {
+    color: $color-primary;
+    text-align: center;
+    padding: 50px 0;
+    p {
+      color: $color-primary;
+      font-size: 14px;
+      font-weight: 200;
+      line-height: 25px;
+      font-family: "AvenirBook";
+    }
+    p.headering-title {
+      color: $color-primary;
+      font-size: 20px;
+      font-weight: 600;
+      font-family: "AvenirBlack";
+      margin-bottom: 10px;
+    }
+  }
+  .renovation-row {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+    .renovation.nav-tabs {
+      display: flex;
+      flex-direction: column;
+      border-bottom: none;
+      width: 50%;
+      .nav-link {
+        font-size: 17px;
+        font-weight: 400;
+        font-family: "AvenirBook";
+        padding: 10px 0;
+        cursor: pointer;
+        color: $color-black;
+        &:hover {
+          border-color: transparent;
+        }
+      }
+      .nav-link.active {
+        font-size: 15px;
+        font-weight: 600;
+        font-family: "AvenirBlack";
+        border-bottom: 2px solid $color-secondary;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        display: inline;
+        padding: 5px 0;
+      }
+    }
+    .tab-content {
+      background: $color-light-gray;
+      padding: 20px;
+      width: 50%;
+      p,
+      li {
+        color: $color-primary;
+        font-size: 14px;
+        font-weight: 200;
+        line-height: 25px;
+        font-family: "AvenirBook";
+      }
+    }
+  }
+
+  .broker-coquitlam {
+    margin: 80px 0;
+    p {
+      color: $color-primary;
+      font-size: 14px;
+      font-weight: 200;
+      line-height: 25px;
+      font-family: "AvenirBook";
+    }
+    h2 {
+      color: $color-primary;
+      font-size: 22px;
+      font-weight: 600;
+      font-family: "AvenirBlack";
+      margin-bottom: 10px;
+    }
+    span {
+      cursor: pointer;
+      color: $color-secondary;
+      font-weight: 600;
+      font-family: "AvenirBlack";
+      text-decoration: none;
+    }
+  }
+}
+
+.works-container{
+  .works-title{
+    font-size: 45px;
+    font-family: 'Oswald', sans-serif;
+  }
+  .works-content{
+    text-align: justify;
+  }
+
+}
+.service-texts {
+  display: flex;
+  align-items: center;
+}
+section.meeting_section {
+  overflow-x: hidden;
+}
+q.testimonials-content {
+  font-style: italic;
+}
+p.testimonials-name {
+  font-size: 20px;
+  margin-top: 20px;
+  color: $color-secondary;
+  font-weight: bold;
+}
+.testimonial-box {
+  height: 100%!important;
+  box-shadow: -1px -3px 12px -5px #000;
+}
+.Bc-Coquitlam .broker-coquitlam span svg {
+  width: 10px;
+}
+@media all and (max-width: 912px) {
+  .currentRate .easy-application {
+    background-size: auto;
+}
+  .wehelp_section .wehelp_text p.wehelp_title {
+    left: 0;
+  }
+  .wehelp_section .wehelp_text p.wehelp_title  :after {
+    width: 50%;
+    margin-left: 9%;
+  }
+  .faq_section .faq_text:before {
+    width: 15%;
+  }
+  .meeting_section h3 :after {
+    width: 64%;
+  }
+
+  footer {
+    .wrap {
+      width: 55%;
+      p.widget_title {
+        color: $color-white;
+        font-family: "AvenirBook";
+        font-size: 25px;
+        span {
+          color: $color-secondary;
+        }
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        color: $color-white;
+        font-family: "AvenirBook";
+        font-size: 15px;
+      }
+
+      .footer-logo {
+        width: 200px;
+        margin: 50px auto;
+        text-align: center;
+      }
+      .row {
+        div:nth-child(3) {
+          text-align: center;
+        }
+        div {
+          text-align: center;
+        }
+      }
+    }
+  }
+  .flexability-slider .carouselcaption .bannerCaption {
+    position: relative;
+    z-index: 99;
+    padding: 10px 80px;
+    margin-top: 0;
+}
+.navbar-nav ul {
+  list-style: none;
+  display: initial;
+  margin-top: revert;
+}
+}
+@media all and (max-width: 768px) {
+  .pagination {
+    display: block !important;
+  }
+  footer .wrap .footer-menu ul {
+    display: block;
+  }
+  :after{
+    display: none;
+  }
+  .home-slider .carousel-indicators {
+    bottom: 4%;
+}
+  .Bc-Coquitlam .renovation-row {
+      flex-wrap: wrap;
+      width: 100%;
+  }
+  .Bc-Coquitlam .renovation-row .renovation.nav-tabs {
+    width: 100%;
+}
+.Bc-Coquitlam .renovation-row .tab-content {
+  width: 100%;
+}
+.our-locations .location-images .col div a {
+  font-size: 15px;
+}
+
+  .navbar-nav a:hover {
+    border-bottom: unset;
+}
+  .navbar-nav a:hover:before {
+   display:none;
+}
+  .navbar-nav a {
+    text-align: center;
+}
+  .wehelp_image video {
+    width: 100% !important; 
+}
+  .navbar-nav ul {
+    flex-direction: column;
+  }
+  h2,
+  span {
+    :after,
+    :before {
+      display: none;
+    }
+  }
+  .faq_section .faq_text:before {
+    display: none;
+  }
+  .Banner_carouselcaption__NAlFf {
+    bottom: 0;
+  }
+
+
+
+  footer {
+    text-align: center;
+    .wrap {
+      .social-url {
+        :before {
+          left: 0%;
+        }
+        :after {
+          right: 0%;
+        }
+      }
+    }
+  }
+  .wehelp_section .wehelp_text p.wehelp_title {
+    left: 0;
+    padding: 30px 0;
+    text-align: center;
+  }
+  .wehelp_section .wehelp_text p.wehelp_title span,
+  .meeting_section h3 span,
+  .split_section .split_text h3 span {
+    display: inline;
+  }
+  .wehelp_section .wehelp_image,
+  .split_section .split_image,
+  .split_section .flex-row-reverse .split_image {
+    width: 100%;
+    text-align: center;
+  }
+  .Banner_carouselcaption__NAlFf {
+    bottom: 10%;
+    z-index: 999;
+  }
+  .works-container .works-title {
+    text-align: center !important;
+}
+.wehelp_section:before {
+  position: inherit;
+}
+.meeting_text {
+  margin-bottom: 29px;
+}
+.flexability-slider .carouselcaption .bannerCaption .sliderTitle {
+  font-size: 35px;
+}
+.flexability-slider .carouselcaption .bannerCaption .sliderSubtitle {
+  font-size: 22px;
+}
+.flexability-slider .carouselcaption .bannerCaption p {
+  margin-top: 17px;
+}
+.flexability-slider .carouselcaption .bannerCaption {
+  position: relative;
+  z-index: 99;
+  padding: 10px 10px;
+  margin-top: 0;
+}
+.faq_section {
+  background-size: contain;
+}
+}
+@media all and (max-width: 540px) {
+  .meeting_section h2{
+    font-size: 30px;
+  }
+  .team_section h1 {
+    padding: 30px;
+    font-size: 40px;
+}
+  .team_section h2, .meeting_section h3, .split_section .split_text h3{
+    font-size: 35px;
+  }
+.cta_section h3 {
+    font-size: 26px;
+}
+  footer .wrap .social-url :before{
+    display: none;
+  }
+  footer .wrap .footer-logo {
+    width: unset;
+}
+  .currentRate .current-container {
+    width: 100%;
+}
+  footer .wrap .footer-menu ul span {
+    float: none;
+    margin-right: 0;
+}
+.ms-auto.py-5.my-5.my-lg-0.footer-menu {
+  margin: 0 !important;
+}
+  .flexability-slider .carouselcaption .bannerCaption {
+    padding: 15px 30px;
+    margin-top: 0;
+  }
+  .flexability-slider .carouselcaption .bannerCaption p {
+    margin-top: 5px;
+  }
+  .hero-title-col .hero-title {
+    font-size: 50px;
+}
+  .flexability-slider .carouselcaption .bannerCaption .sliderTitle {
+    font-size: 40px;
+  }
+ 
+  .wehelp_section .wehelp_text p.wehelp_title {
+    font-size: 35px;
+}
+
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderTitle {
+    font-size: 60px;
+  }
+  .Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {
+    font-size: 20px;
+  }
+  .faq_section {
+    position: relative !important;
+    width: 100%;
+    height: inherit;
+    background-size: cover;
+    .faq_text {
+      text-align: center;
+      left: 0;
+      top: 30px;
+      position: static;
+      margin: auto;
+    }
+  }
+ 
+  .Banner_carouselcaption__NAlFf {
+    bottom: 0%;
+    z-index: 999;
+  }
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderTitle {
+    font-size: 50px;
+  }
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderSubtitle {
+    font-size: 35px;
+  }
+  .Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {
+    font-size: 20px;
+  }
+  .currentRate {
+    .current-rate,
+    .notes {
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+    .easy-application {
+      padding: 0;
+
+      h1 {
+        font-size: 30px;
+      }
+      h2 {
+        font-size: 20px !important;
+      }
+
+      .application-container {
+        width: 100%;
+      }
+    }
+  }
+  .calculator-cta {
+    width: 80%;
+    margin: 50px auto;
+    padding: 50px 0;
+    text-align: center;
+    h2 {
+      font-size: 20px !important;
+    }
+  }
+  .our-locations .location-images .col div a {
+    font-size: 10px;
+  }
+  .Bc-Coquitlam .renovation-row .renovation.nav-tabs li button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+.our-locations .location-images .col div {
+  width: 67%;
+  opacity: 1;
+}
+.Bc-Coquitlam .refinance-text p {
+  font-size: 40px;
+}
+.faq_section {
+  background-image: url("") !important;
+}
+}
+
+@media all and (max-width: 441px) {
+  
+  .cta_section .cta_first{
+    height: 50vh
+  }
+  .cta_section .cta_text {
+    margin-bottom: 0;
+    top: -88px;
+  }
+  .cta_section{
+    margin: 0;
+  }
+
+  .Banner_carouselcaption__NAlFf {
+      bottom: 0%;
+      z-index: 999;
+      top: 50px;
+  }
+  .meeting_image {
+      display: none;
+  }
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderTitle {
+    font-size: 40px;
+  }
+  .Banner_carouselcaption__NAlFf .Banner_bannerCaption__rNEma .sliderSubtitle {
+    font-size: 25px;
+  }
+  .Banner_carouselcaption__NAlFf .Banner_bannerBtn__0r6sX {
+    font-size: 15px;
+  }
+//   .currentRate .easy-application .overlay {
+//     width: unset;
+// }
+.flexability-slider .carousel-inner {
+ width: 100%;
+}
+.carousel-fade .carousel-item {
+  height: 400px;
+}
+.carousel-fade .carousel-item img{
+  height: 400px;
+}
+.slider-images > span {
+  position: inherit !important;
+}
+.flexability-slider .carouselcaption:before {
+  left: -8px;
+}
+}

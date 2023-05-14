@@ -1,0 +1,80 @@
+// CSS for the Hero component in components/Hero.tsx.
+
+@import "scss/variables";
+
+/* .overlay {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+} */
+
+.carouselcaption {
+    bottom: 30%;
+    z-index: 999;
+    .bannerCaption{
+        font-family: 'DejavuSans';
+        .sliderTitle{
+            color: $color-secondary;
+            margin: 0 auto;
+            font-size: 60px;
+            font-weight: 300;
+        }
+        .sliderSubtitle{
+            font-family: "AvenirBook";
+            color: $color-white;
+            font-size: 40px;
+            font-weight: 100;
+            margin: 0 auto;
+        }
+        p{
+            font-family: 'dejavusans';
+            color: $color-white;
+            font-size: 18px;
+            font-weight: 100;
+            margin: 0 auto;
+        }
+    }
+    .bannerBtn{
+        background: transparent;
+        border: 2px solid $color-white;
+        text-transform: uppercase;
+        font-family: 'AvenirBook';
+        font-size: 18px;
+        border-radius: 0;
+        padding-top: 11px;
+        span{
+            color: $color-secondary;
+            font-family: 'AvenirBlack';
+        }
+        &:hover{
+            background: transparent;
+            border: 2px solid $color-secondary;
+            color: $color-white;
+            opacity: .5;
+        }
+        
+    }
+}
+
+@media all and (max-width: 441px){
+    .carouselcaption {
+        // bottom: 0;
+        .bannerCaption{
+            .sliderTitle{
+                font-size: 30px;
+            }
+            .sliderSubtitle{
+                font-size: 20px;
+            }
+            p{
+                font-size: 15px;
+            }
+        }
+        
+        .bannerBtn{
+            font-size: 18px;
+        }
+    }
+}
