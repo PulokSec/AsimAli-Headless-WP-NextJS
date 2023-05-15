@@ -333,7 +333,7 @@ export default function Page(props: MyProps) {
       </Head>
       <main className="content">
         <Header settings={settings} mainMenus={mainMenus} />
-        {/* <Banner sliders={sliders} /> */}
+        <Banner sliders={sliders} />
         <WeHelp helps={helps} />
         <PartnerLogo logos={logos} />
         <Team teams={teams} />
