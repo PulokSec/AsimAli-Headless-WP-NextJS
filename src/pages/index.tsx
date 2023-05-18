@@ -21,6 +21,7 @@ const SplitImageRight = dynamic(() => import('../components/SplitImageRight'));
 
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import MobileBanner from 'components/MobileBanner';
 
 // import Banner from '../components/Banner';
 // import WeHelp from '../components/WeHelp';
@@ -66,6 +67,9 @@ export async function getStaticProps() {
               sliderSubtitle
               sliderDescription
               sliderImage {
+                sourceUrl
+              }
+              mobileImage {
                 sourceUrl
               }
               sliderButtonUrl {
@@ -210,9 +214,9 @@ export async function getStaticProps() {
             altText
           }
         }
-        # generalSettings {
-        #     schemaProductRating
-        # }
+        generalSettings {
+            schemaProductRating
+        }
         footerSettings {
           socialUrl {
             facebook
@@ -273,6 +277,7 @@ export async function getStaticProps() {
       mainMenus: data?.menus?.nodes,
       metaData: data?.pages?.nodes,
       sliders: data?.pages?.nodes,
+      msliders: data?.pages?.nodes,
       helps: data?.pages?.nodes,
       logos: data?.pages?.nodes,
       teams: data?.pages?.nodes,
@@ -291,6 +296,7 @@ type MyProps = {
   mainMenus: any;
   metaData: any;
   sliders: any;
+  msliders: any;
   helps: any;
   logos: any;
   teams: any;
@@ -303,7 +309,7 @@ type MyProps = {
 };
 
 export default function Page(props: MyProps) {
-  const { settings, mainMenus, metaData, sliders, helps, logos, teams, meetings, splitImagesLeft, flexsliders, splitImagesRight, images, faqsections } = props;
+  const { settings, mainMenus, metaData, sliders, msliders, helps, logos, teams, meetings, splitImagesLeft, flexsliders, splitImagesRight, images, faqsections } = props;
 
 
 
@@ -333,7 +339,12 @@ export default function Page(props: MyProps) {
       </Head>
       <main className="content">
         <Header settings={settings} mainMenus={mainMenus} />
-        <Banner sliders={sliders} />
+        <div className='desktop-banner'>
+          <Banner sliders={sliders} />
+        </div>
+        <div className='mobile-banner'>
+          <MobileBanner msliders={msliders} />
+        </div>
         <WeHelp helps={helps} />
         <PartnerLogo logos={logos} />
         <Team teams={teams} />

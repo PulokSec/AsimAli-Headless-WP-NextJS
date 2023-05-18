@@ -16,7 +16,7 @@ export async function getStaticProps() {
 
   const { data } = await client.query({
     query: gql`query {
-      pages(where: {title: "home"}) {
+      pages(where: {id: 14}) {
         nodes {
           HomeLandingPage {
             homeSliderSection {
@@ -96,7 +96,7 @@ const Banner = (props: MyProps) => {
                 slider?.HomeLandingPage?.homeSliderSection?.homeSlider.map((slide) => {
                   return (
                     <Carousel.Item key={slide.sliderTitle}>
-                      <div className={styles.overlay}></div>
+                      {/* <div className={styles.overlay}></div> */}
 
                       <div
                         style={{
