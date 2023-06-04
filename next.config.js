@@ -11,8 +11,8 @@ const withPWA = require('next-pwa')({
 })
 
 module.exports = withOffline ( withFaust ( withPWA({
-  // optimizeImages: false,
     images: {
+      optimized: true,
       domains: ['asimali.ca'],
     },
     eslint: {
