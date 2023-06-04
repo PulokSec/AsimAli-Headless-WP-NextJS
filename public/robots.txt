@@ -1,2 +1,9 @@
+# *
 User-agent: *
-Disallow: /
+Allow: /
+
+# Host
+Host: https://asimali.ca/
+
+# Sitemaps
+Sitemap: https://asimali.ca/sitemap.xml
