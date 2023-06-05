@@ -38,25 +38,23 @@
         }
     }
     .bannerBtn{
-        background: $color-secondary;
-        border: none;
-        color: $color-black;
-        font-weight: bold;
+        background: transparent;
+        border: 2px solid $color-white;
         text-transform: uppercase;
         font-family: 'AvenirBook';
-        font-size: 16px;
+        font-size: 18px;
         border-radius: 0;
         padding-top: 11px;
         span{
-            color: black;
+            color: $color-secondary;
             font-family: 'AvenirBlack';
         }
-        // &:hover{
-        //     background: transparent;
-        //     border: 2px solid $color-secondary;
-        //     color: $color-white;
-        //     opacity: .5;
-        // }
+        &:hover{
+            background: transparent;
+            border: 2px solid $color-secondary;
+            color: $color-white;
+            opacity: .5;
+        }
         
     }
 }

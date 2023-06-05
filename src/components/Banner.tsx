@@ -135,7 +135,7 @@ const Banner = (props: MyProps) => {
                         </div>
                       </div>
                       <Carousel.Caption className={styles.carouselcaption}>
-                        <Row className="d-flex justify-content-center home-slide">
+                      <Row className="align-items-center home-slide">
                           <Col className='text-start' xs={12} lg="6">
                             <div className={styles.bannerCaption}>
                               <p className={styles.sliderSubtitle}>{slide.sliderSubtitle}</p>
@@ -143,13 +143,12 @@ const Banner = (props: MyProps) => {
                               <p>{slide.sliderDescription}</p>
                             </div>
 
-                          {slide.sliderButtonUrl == null ? "" : (
-                            <div className='d-flex align-items-center justify-content-center gap-5 mt-5' xs={12} lg="6">
-                              <Link href='/about-us'><Button className={styles.bannerBtn} >Learn More</Button></Link>
-                              <Link href='/contact-us'><Button className={`${styles.bannerBtn} bg-light`} >Get A FREE QUOTE</Button></Link>
-                            </div>
-                          )}
                           </Col>
+                          {slide.sliderButtonUrl == null ? "" : (
+                            <Col className='text-end' xs={12} lg="6">
+                              <Link href={slide.sliderButtonUrl.url}><Button className={styles.bannerBtn} >Get <span>Approved</span></Button></Link>
+                            </Col>
+                          )}
 
                         </Row>
                       </Carousel.Caption>
