@@ -81,7 +81,7 @@ const SplitImageLeft = (props: MyProps) => {
                   <Col lg={4}>
                     <div className="split_text">
                       <h3 dangerouslySetInnerHTML={{ __html: splitImage?.HomeLandingPage?.splitImageLeftSection?.splitTitle }} ></h3>
-                      <p dangerouslySetInnerHTML={{ __html: splitImage?.HomeLandingPage?.splitImageLeftSection?.splitDescription }}></p>
+                      <div dangerouslySetInnerHTML={{ __html: splitImage?.HomeLandingPage?.splitImageLeftSection?.splitDescription }}></div>
 
                       {splitImage?.HomeLandingPage?.splitImageLeftSection?.splitButton == null ? "" : (
                         <Link href={splitImage?.HomeLandingPage?.splitImageLeftSection?.splitButton.url}>

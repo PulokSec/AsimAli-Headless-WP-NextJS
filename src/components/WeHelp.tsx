@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+import Image from 'next/image';
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -44,6 +44,9 @@ type MyProps = {
 const WeHelp = (props: MyProps) => {
 
   const { helps } = props;
+  const myLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 75}`
+  }
 
   return (
     <>
@@ -60,11 +63,14 @@ const WeHelp = (props: MyProps) => {
                 <Container>
                   <Row >
                     <Col lg={6} >
-                      <div className="wehelp_image">
-                        <video autoPlay loop style={{ width: '500px', height: '500px' }}>
-                          <source src={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
-                        </video>
-                      </div>
+                    <div className="split_image">
+                      <Image
+                        src={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl}
+                        loader={myLoader}
+                        width="500"
+                        height="700"
+                        alt={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
+                    </div>
                     </Col>
                     <Col lg={6} >
                       <div className="wehelp_text">

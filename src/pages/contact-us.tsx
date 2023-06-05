@@ -257,9 +257,11 @@ const Contact = (props: MyProps) => {
                             <div className="col-md-6">
                               <label htmlFor="about">Please Contact Me About</label>
                               <select name="about" id="about" className="form_control" aria-required="true" aria-invalid="false">
-                                <option value="Mortgage">Mortgage</option>
-                                <option value="Leasing">Leasing</option>
-                                <option value="Other">Other</option>
+                                <option value="Mortgage">Web Design</option>
+                                <option value="Leasing">Social Media Marketing</option>
+                                <option value="Other">PPC Management</option>
+                                <option value="Other">Google My Business</option>
+                                <option value="Other">Graphic Design</option>
                               </select>
                             </div>
 

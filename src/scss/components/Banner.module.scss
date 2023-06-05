@@ -15,6 +15,7 @@
     z-index: 999;
     .bannerCaption{
         font-family: 'DejavuSans';
+        text-align: center;
         .sliderTitle{
             color: $color-secondary;
             margin: 0 auto;
@@ -37,23 +38,25 @@
         }
     }
     .bannerBtn{
-        background: transparent;
-        border: 2px solid $color-white;
+        background: $color-secondary;
+        border: none;
+        color: $color-black;
+        font-weight: bold;
         text-transform: uppercase;
         font-family: 'AvenirBook';
-        font-size: 18px;
+        font-size: 16px;
         border-radius: 0;
         padding-top: 11px;
         span{
-            color: $color-secondary;
+            color: black;
             font-family: 'AvenirBlack';
         }
-        &:hover{
-            background: transparent;
-            border: 2px solid $color-secondary;
-            color: $color-white;
-            opacity: .5;
-        }
+        // &:hover{
+        //     background: transparent;
+        //     border: 2px solid $color-secondary;
+        //     color: $color-white;
+        //     opacity: .5;
+        // }
         
     }
 }

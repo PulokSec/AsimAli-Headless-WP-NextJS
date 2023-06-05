@@ -1,10 +1,9 @@
-import React from 'react';
-import { Carousel, Col, Row, Button } from 'react-bootstrap';
-import Image from 'next/image';
-import Link from 'next/link';
-import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+import React from "react";
+import { Carousel, Col, Row, Button } from "react-bootstrap";
+import Image from "next/image";
+import Link from "next/link";
+import { gql } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -13,26 +12,28 @@ export async function getStaticProps() {
   });
 
   const { data } = await client.query({
-    query: gql`query{
-      pages(where: {id: 14}) {
-        nodes {
-          HomeLandingPage {
-            flexabilitySlider {
-              sliderTitle
-              sliderSubtitle
-              sliderDescription
-              sliderImage {
-                altText
-                sourceUrl
-              }
-              sliderButtonUrl {
-                url
+    query: gql`
+      query {
+        pages(where: { id: 14 }) {
+          nodes {
+            HomeLandingPage {
+              flexabilitySlider {
+                sliderTitle
+                sliderSubtitle
+                sliderDescription
+                sliderImage {
+                  altText
+                  sourceUrl
+                }
+                sliderButtonUrl {
+                  url
+                }
               }
             }
           }
         }
       }
-    }`,
+    `,
   });
 
   return {
@@ -46,29 +47,20 @@ type MyProps = {
   flexsliders: any;
 };
 
-
 const FlexabilitySlider = (props: MyProps) => {
-
   const { flexsliders } = props;
 
-
   const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
   return (
     <>
       <div className="flexability-slider">
-
         <Carousel fade>
-
-
           {flexsliders?.map(function (slider) {
-
-            return (
-
-              slider?.HomeLandingPage?.flexabilitySlider == null ? "" :
-
-                slider?.HomeLandingPage?.flexabilitySlider.map((slide) => {
+            return slider?.HomeLandingPage?.flexabilitySlider == null
+              ? ""
+              : slider?.HomeLandingPage?.flexabilitySlider.map((slide) => {
                   return (
                     <Carousel.Item key={slide.sliderTitle}>
                       <div className="overlay"></div>
@@ -80,34 +72,33 @@ const FlexabilitySlider = (props: MyProps) => {
                           height="50"
                           layout="responsive"
                           objectFit="cover"
-                          alt={slide?.sliderImage?.altText} />
+                          alt={slide?.sliderImage?.altText}
+                        />
                       </div>
                       <Carousel.Caption className="carouselcaption">
                         <Row className="align-items-center home-slide">
-                          <Col className='text-start' xs={12} lg="6">
+                          <Col className="text-start" xs={12} lg="6">
                             <div className="bannerCaption">
-                              <p className='sliderTitle'>{slide?.sliderTitle}</p>
-                              <p className='sliderSubtitle'>{slide?.sliderSubtitle}</p>
+                              <p className="sliderTitle">
+                                {slide?.sliderTitle}
+                              </p>
+                              <p className="sliderSubtitle">
+                                {slide?.sliderSubtitle}
+                              </p>
                               <p>{slide?.sliderDescription}</p>
-                              <Link href={slide?.sliderButtonUrl
-                                ?.url}><Button className="bannerBtn" >Get <span>Approved</span></Button></Link>
+                              {/* <Link href={slide?.sliderButtonUrl?.url}>
+                                <Button className="bannerBtn">
+                                  Get <span>Approved</span>
+                                </Button>
+                              </Link> */}
                             </div>
-
                           </Col>
-
                         </Row>
                       </Carousel.Caption>
                     </Carousel.Item>
-                  )
-                }
-
-                ))
-
-
-          }
-
-          )}
-
+                  );
+                });
+          })}
         </Carousel>
       </div>
     </>
