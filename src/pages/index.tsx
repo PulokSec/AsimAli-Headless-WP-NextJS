@@ -23,16 +23,6 @@ import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import MobileBanner from 'components/MobileBanner';
 
-// import Banner from '../components/Banner';
-// import WeHelp from '../components/WeHelp';
-// import Team from 'components/Team';
-// import Meeting from 'components/Meeting';
-// import PartnerLogo from 'components/PartnerLogo';
-// import SplitImageLeft from '../components/SplitImageLeft';
-// import FAQ from 'components/FAQ';
-// import Gallery from 'components/Gallery';
-// import FlexabilitySlider from 'components/FlexabilitySlider';
-// import SplitImageRight from '../components/SplitImageRight';
 
 
 

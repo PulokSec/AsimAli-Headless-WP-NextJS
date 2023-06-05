@@ -24,19 +24,19 @@ const MyDocument = () => {
             <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" /></noscript>
             
             <link rel="dns-prefetch" href="https://asimaliprod.wpengine.com" />
-            <link type="image/webp" rel="preload" as="image" href="/home-banner.webp" />
+            {/* <link type="image/webp" rel="preload" as="image" href="/home-banner.webp" /> */}
 
 
             <link rel="manifest" href="/manifest.json" />
-            <link rel="apple-touch-icon" href="/logo.png"></link>
+            <link rel="apple-touch-icon" href="/favicon.ico"></link>
 
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+            {/* <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" /> */}
+            <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
             <link rel="manifest" href="/site.webmanifest" />
             <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#12143a" />
             <meta name="msapplication-TileColor" content="#da532c" />
-            <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+            {/* <meta name="msapplication-TileImage" content="/mstile-144x144.png" /> */}
             <meta name="theme-color" content="#ffffff" />
             
         </Head>
