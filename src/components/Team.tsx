@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+import styles from 'scss/components/Banner.module.scss';
 
 
 export async function getStaticProps() {
@@ -63,7 +63,9 @@ const Team = (props: MyProps) => {
 
                 >
 
+                  <div className={styles.overlay}>
                   <h1 dangerouslySetInnerHTML={{ __html: team?.HomeLandingPage?.teamSection?.teamTitle }} ></h1>
+                  </div>
                 </div>
               )}
 
