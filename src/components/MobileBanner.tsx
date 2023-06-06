@@ -131,8 +131,7 @@ const MobileBanner = (props: MyProps) => {
                                                 {console.log("Home slider Shabbir", slide)}
 
                                             </div>
-                                            {/* </div> */}
-                                            {/* </div> */}
+                                            <div className={styles.overlay}>
                                             <Carousel.Caption className={styles.carouselcaption}>
                                                 <Row className="align-items-center home-slide">
                                                     <Col className='text-center' xs={12} lg="6">
@@ -151,6 +150,7 @@ const MobileBanner = (props: MyProps) => {
 
                                                 </Row>
                                             </Carousel.Caption>
+                                            </div>
                                         </Carousel.Item>
                                     )
                                 }  //  --

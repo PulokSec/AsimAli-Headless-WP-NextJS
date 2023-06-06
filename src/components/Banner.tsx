@@ -134,6 +134,7 @@ const Banner = (props: MyProps) => {
                           </div>
                         </div>
                       </div>
+                      <div className={styles.overlay}>
                       <Carousel.Caption className={styles.carouselcaption}>
                       <Row className="align-items-center home-slide">
                           <Col className='text-start' xs={12} lg="6">
@@ -152,6 +153,7 @@ const Banner = (props: MyProps) => {
 
                         </Row>
                       </Carousel.Caption>
+                      </div>
                     </Carousel.Item>
                   )
                 }  //  --

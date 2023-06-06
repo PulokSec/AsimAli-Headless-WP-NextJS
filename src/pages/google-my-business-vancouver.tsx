@@ -44,7 +44,7 @@ export async function getStaticProps() {
 
   const { data } = await client.query({
     query: gql`query{ 
-      pages(where: {id: 778}) {
+      pages(where: {id: 810}) {
         nodes {
           seo {
             title
@@ -57,7 +57,7 @@ export async function getStaticProps() {
               }
             }
           }
-          Abbotsford {
+          GoogleMyBusiness {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -166,7 +166,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      abbotsfordData: data?.pages?.nodes,
+      googleMyBusinessData: data?.pages?.nodes,
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
@@ -175,7 +175,7 @@ export async function getStaticProps() {
 }
 
 type MyProps = {
-  abbotsfordData: any;
+  googleMyBusinessData: any;
   metaData: any;
   settings: any;
   mainMenus: any;
@@ -183,9 +183,9 @@ type MyProps = {
 };
 
 
-const Abbotsford = (props: MyProps) => {
+const GoogleMyBusiness = (props: MyProps) => {
 
-  const { settings, mainMenus, abbotsfordData, metaData } = props;
+  const { settings, mainMenus, googleMyBusinessData, metaData } = props;
 
   const [key, setKey] = useState(null);
 
@@ -196,7 +196,7 @@ const Abbotsford = (props: MyProps) => {
 
   return (
     <>
-      {abbotsfordData.map((data, index) => {
+      {googleMyBusinessData.map((data, index) => {
         return (
           <div key={index} className='Bc-Coquitlam'>
             <Head>
@@ -216,34 +216,34 @@ const Abbotsford = (props: MyProps) => {
             <Header settings={settings} mainMenus={mainMenus} />
 
             <main className="content">
-              {data?.Abbotsford?.bannerTitle == null ? "" : (
+              {data?.GoogleMyBusiness?.bannerTitle == null ? "" : (
                 <Hero
-                  title={data?.Abbotsford?.bannerTitle}
-                  heading={data?.Abbotsford?.bannerHeading}
-                  description={data?.Abbotsford?.bannerDescription}
-                  bgImage={data?.Abbotsford?.bannerImage?.sourceUrl}
+                  title={data?.GoogleMyBusiness?.bannerTitle}
+                  heading={data?.GoogleMyBusiness?.bannerHeading}
+                  description={data?.GoogleMyBusiness?.bannerDescription}
+                  bgImage={data?.GoogleMyBusiness?.bannerImage?.sourceUrl}
                 />
               )}
 
               <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                   <Col md={5}>
-                    <p>{data?.Abbotsford?.bannerTitle?.split(" ")[0]} <span>{data?.Abbotsford?.bannerTitle?.split(" ")[1]}</span></p>
+                    <p>{data?.GoogleMyBusiness?.bannerTitle?.split(" ")[0]} <span>{data?.GoogleMyBusiness?.bannerTitle?.split(" ")[1]} {data?.GoogleMyBusiness?.bannerTitle?.split(" ")[2]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.Abbotsford?.bannerDescription}</span>
+                    <span>{data?.GoogleMyBusiness?.bannerDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
                   <Col md={7}>
-                    <div dangerouslySetInnerHTML={{ __html: data?.Abbotsford?.aboutText }} >
+                    <div dangerouslySetInnerHTML={{ __html: data?.GoogleMyBusiness?.aboutText }} >
                     </div>
                   </Col>
                   <Col md={5}>
                     <Image
-                      src={data?.Abbotsford?.aboutImage?.sourceUrl}
+                      src={data?.GoogleMyBusiness?.aboutImage?.sourceUrl}
                       loader={myLoader}
-                      alt={data?.Abbotsford?.aboutImage?.altText}
+                      alt={data?.GoogleMyBusiness?.aboutImage?.altText}
                       width="100%"
                       height="90"
                       layout="responsive"
@@ -251,7 +251,7 @@ const Abbotsford = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Abbotsford?.slider == null ? "" : (
+                {data?.GoogleMyBusiness?.slider == null ? "" : (
                   <Row className='application-slider'>
 
                     <Carousel
@@ -260,7 +260,7 @@ const Abbotsford = (props: MyProps) => {
                       responsive={responsive}
                     >
 
-                      {data?.Abbotsford?.slider.map((slide, a) => {
+                      {data?.GoogleMyBusiness?.slider.map((slide, a) => {
                         return (
                           <div key={a} className="application-slide text-center">
                             <span>{slide?.title}</span>
@@ -275,19 +275,19 @@ const Abbotsford = (props: MyProps) => {
 
                 <Row className="product-service">
                   <Col className='mb-5' md={12}>
-                    <h2 className='text-center'>{data?.Abbotsford?.productsTitle}</h2>
+                    <h2 className='text-center'>{data?.GoogleMyBusiness?.productsTitle}</h2>
                   </Col>
                   <Col md={3}>
                     <span
-                      dangerouslySetInnerHTML={{ __html: data?.Abbotsford?.productsLeftText }}
+                      dangerouslySetInnerHTML={{ __html: data?.GoogleMyBusiness?.productsLeftText }}
                     ></span>
 
                   </Col>
                   <Col md={6}>
                     <Image
-                      src={data?.Abbotsford?.productsImage?.sourceUrl}
+                      src={data?.GoogleMyBusiness?.productsImage?.sourceUrl}
                       loader={myLoader}
-                      alt={data?.Abbotsford?.productsImage?.altText}
+                      alt={data?.GoogleMyBusiness?.productsImage?.altText}
                       width="190"
                       height="120"
                       layout="responsive"
@@ -296,37 +296,37 @@ const Abbotsford = (props: MyProps) => {
                   </Col>
                   <Col md={3}>
                     <span
-                      dangerouslySetInnerHTML={{ __html: data?.Abbotsford?.productsRightText }}
+                      dangerouslySetInnerHTML={{ __html: data?.GoogleMyBusiness?.productsRightText }}
                     ></span>
                   </Col>
                 </Row>
                 <Row className='apply-step'>
                   <Col md={4}>
-                    {data?.Abbotsford?.firstApplyStepTitle == null ? "" : (
+                    {data?.GoogleMyBusiness?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <p>{data?.Abbotsford?.firstApplyStepTitle}</p>
+                        <p>{data?.GoogleMyBusiness?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
                     )}
                   </Col>
                   <Col md={4}>
-                    {data?.Abbotsford?.secondApplyStepTitle == null ? "" : (
+                    {data?.GoogleMyBusiness?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
                         <p>
-                          <span>{data?.Abbotsford?.secondApplyStepTitle}</span>
+                          <span>{data?.GoogleMyBusiness?.secondApplyStepTitle}</span>
                         </p>
-                        <p>{data?.Abbotsford?.secondApplyStepDescription}</p>
+                        <p>{data?.GoogleMyBusiness?.secondApplyStepDescription}</p>
                       </div>
                     )}
                   </Col>
                   <Col md={4}>
-                    {data?.Abbotsford?.thirdApplyStepTitle == null ? "" : (
+                    {data?.GoogleMyBusiness?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <p>{data?.Abbotsford?.thirdApplyStepTitle}</p>
+                        <p>{data?.GoogleMyBusiness?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -335,11 +335,11 @@ const Abbotsford = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <p className='headering-title'>{data?.Abbotsford?.brokerTitle}</p>
-                    <p>{data?.Abbotsford?.brokerDescription}</p>
+                    <p className='headering-title'>{data?.GoogleMyBusiness?.brokerTitle}</p>
+                    <p>{data?.GoogleMyBusiness?.brokerDescription}</p>
                   </Col>
                 </Row>
-                {data.Abbotsford.renovation == null ? "" : (
+                {data.GoogleMyBusiness.renovation == null ? "" : (
                   <Row className="renovation-row">
                     <Tabs
                       id="controlled-tab-example"
@@ -347,7 +347,7 @@ const Abbotsford = (props: MyProps) => {
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {data.Abbotsford.renovation.map((tab, item) => {
+                      {data.GoogleMyBusiness.renovation.map((tab, item) => {
                         return (
                           <Tab key={item} eventKey={item.toString()} title={tab.title}>
                             <div
@@ -362,12 +362,12 @@ const Abbotsford = (props: MyProps) => {
                 )}
                 <Row className='broker-coquitlam'>
                   <Col>
-                    <h2>{data?.Abbotsford?.
+                    <h2>{data?.GoogleMyBusiness?.
                       brokerTitle}</h2>
-                    <p>{data?.Abbotsford?.brokerDescription}</p>
-                    {data?.Abbotsford?.brokerLink == null ? "" : (
-                      <Link href={data?.Abbotsford?.brokerLink?.url}>
-                        <span>Read More <FontAwesomeIcon icon={faChevronRight} /></span>
+                    <p>{data?.GoogleMyBusiness?.brokerDescription}</p>
+                    {data?.GoogleMyBusiness?.brokerLink == null ? "" : (
+                      <Link href={data?.GoogleMyBusiness?.brokerLink?.url}>
+                        <span>Contact Us <FontAwesomeIcon icon={faChevronRight} /></span>
                       </Link>
                     )}
 
@@ -387,4 +387,4 @@ const Abbotsford = (props: MyProps) => {
   );
 };
 
-export default Abbotsford;
+export default GoogleMyBusiness;

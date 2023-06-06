@@ -31,9 +31,9 @@ export async function getStaticProps() {
                     }
                   }
                 }
-                blog {
-                  blogBannerTitle
-                  blogBannerBackgroundImage {
+                news {
+                  newsBannerTitle
+                  newsBannerBackgroundImage {
                     altText
                     sourceUrl
                   }
@@ -105,7 +105,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      blogData: data?.pages?.nodes,
+      newsData: data?.pages?.nodes,
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
@@ -114,7 +114,7 @@ export async function getStaticProps() {
 }
 
 type MyProps = {
-  blogData: any;
+  newsData: any;
   metaData: any;
   settings: any;
   mainMenus: any;
@@ -122,11 +122,11 @@ type MyProps = {
 };
 
 
-const Blog = (props: MyProps) => {
+const News = (props: MyProps) => {
 
-  const { blogData, metaData, settings, mainMenus } = props;
+  const { newsData, metaData, settings, mainMenus } = props;
 
-  const [blogs, setBlogs] = useState([]);
+  const [news, setNews] = useState([]);
   const [isLoading, seIsLoading] = useState(true);
 
   const [pageCount, setPageCount] = useState(0);
@@ -208,7 +208,7 @@ const Blog = (props: MyProps) => {
       })
       .then((result) => {
         seIsLoading(false);
-        setBlogs(result?.data?.posts?.nodes);
+        setNews(result?.data?.posts?.nodes);
 
       }
 
@@ -240,13 +240,13 @@ const Blog = (props: MyProps) => {
       </Head>
       <Header settings={settings} mainMenus={mainMenus} />
 
-      {blogData?.map((data, i) => {
+      {newsData?.map((data, i) => {
         return (
           <div key={i}>
             <main className="content">
               <Hero
-                title={data?.blog.blogBannerTitle}
-                bgImage={data?.blog?.blogBannerBackgroundImage?.sourceUrl}
+                title={data?.news.newsBannerTitle}
+                bgImage={data?.news?.newsBannerBackgroundImage?.sourceUrl}
               />
 
               {isLoading &&
@@ -258,33 +258,33 @@ const Blog = (props: MyProps) => {
               }
 
               <Container className="my-5 blog-container">
-                <h1 className="my-3">{data?.blog.blogBannerTitle}</h1>
+                <h1 className="my-3">{data?.news.newsBannerTitle}</h1>
                 <div className="row row-cols-1 row-cols-md-3 g-4 items">
-                  {blogs.map((blog, index) => {
+                  {news.map((item, index) => {
                     return (
                       <div key={index} className="col">
                         <div className="card h-100">
                           <div className="blogImage">
                             <Image
                               loader={myLoader}
-                              src={blog?.featuredImage?.node?.sourceUrl}
+                              src={item?.featuredImage?.node?.sourceUrl}
                               width="100%"
                               height="65"
                               layout="responsive"
                               objectFit="contain"
-                              alt={blog?.featuredImage?.node?.altText} />
+                              alt={item?.featuredImage?.node?.altText} />
                           </div>
                           <div className="card-body">
-                            <Link href={blog.uri}><h2 className="card-title">{blog?.title}</h2>
+                            <Link href={item.uri}><h2 className="card-title">{item?.title}</h2>
                             </Link>
                             <span>
 
-                              <Moment format="MMM D, YYYY" >{blog.date}</Moment></span>
+                              <Moment format="MMM D, YYYY" >{item.date}</Moment></span>
                             {/* <p dangerouslySetInnerHTML={{__html: blog?.content.textContent }}className="card-text my-3"></p> */}
-                            <p className='blog-content'>{blog?.content.replace(/(<([^>]+)>)/ig, '')}</p>
+                            <p className='blog-content'>{item?.content.replace(/(<([^>]+)>)/ig, '')}</p>
                           </div>
                           <div className="card-footers p-3">
-                            <Link href={blog.uri}>
+                            <Link href={item.uri}>
                               <Button className="readMoreBtn" >Read <span>More</span></Button>
                             </Link>
                           </div>
@@ -322,4 +322,4 @@ const Blog = (props: MyProps) => {
   );
 };
 
-export default Blog;
+export default News;

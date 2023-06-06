@@ -1,7 +1,8 @@
 import { CTA, Footer, Header, Hero } from 'components';
 import Head from 'next/head';
-import React, { useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { client } from 'client';
+import { Col, Container, Nav, NavItem, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -33,6 +34,8 @@ const responsive = {
     items: 1
   }
 };
+
+
 export async function getStaticProps() {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
@@ -41,20 +44,20 @@ export async function getStaticProps() {
 
   const { data } = await client.query({
     query: gql`query{ 
-        pages(where: {id: 745}) {
-          nodes {
-            seo {
-              title
-              description
-              canonicalUrl
-              focusKeywords
-              openGraph {
-                image {
-                  url
-                }
+      pages(where: {id: 844}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
               }
             }
-            Delta {
+          }
+          GDesign {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
@@ -63,8 +66,6 @@ export async function getStaticProps() {
                   productsLeftText
                   firstApplyStepTitle
                   brokerTitle
-                  title
-                  description
                   brokerDescription
                   bannerTitle
                   bannerHeading
@@ -94,78 +95,78 @@ export async function getStaticProps() {
                     title
                     content
                   }
-                }
-          }
-        }
-    
-  
-  
-        settingsOptions {
-        AsimOptions {
-          headerSettings {
-            uploadLogo {
-              sourceUrl
-              altText
             }
-          }
-          footerSettings {
-          socialUrl {
-            facebook
-            tiktok
-            linkedin
-            instagram
-          }
-          copyrightText
-          footerLeftWidget {
-            title
-            phoneNumber
-            emailAddress
-          }
-          footerLogoSection {
-            logoText
-            logoUpload {
-              altText
-              sourceUrl
-            }
-          }
-          footerRightWidget {
-            title
-            address
-          }
-        }
-     
         }
       }
   
-      menus(where: {location: PRIMARY}) {
-        nodes {
-          name
-          slug
-          menuItems(first: 50){
-            nodes {
-              url
-              target
-              parentId
-              label
-              cssClasses
-              description
-              id
-              childItems {
-                nodes {
-                  uri
-                  label
-                }
+
+
+      settingsOptions {
+      AsimOptions {
+        headerSettings {
+          uploadLogo {
+            sourceUrl
+            altText
+          }
+        }
+        footerSettings {
+        socialUrl {
+          facebook
+          tiktok
+          linkedin
+          instagram
+        }
+        copyrightText
+        footerLeftWidget {
+          title
+          phoneNumber
+          emailAddress
+        }
+        footerLogoSection {
+          logoText
+          logoUpload {
+            altText
+            sourceUrl
+          }
+        }
+        footerRightWidget {
+          title
+          address
+        }
+      }
+   
+      }
+    }
+
+    menus(where: {location: PRIMARY}) {
+      nodes {
+        name
+        slug
+        menuItems(first: 50){
+          nodes {
+            url
+            target
+            parentId
+            label
+            cssClasses
+            description
+            id
+            childItems {
+              nodes {
+                uri
+                label
               }
             }
           }
         }
       }
-    }`,
+    }
+  }`,
   });
 
   return {
     props: {
-      deltaData: data?.pages?.nodes,
+      gDesignData: data?.pages?.nodes,
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
@@ -174,19 +175,19 @@ export async function getStaticProps() {
 }
 
 type MyProps = {
-  deltaData: any;
+  gDesignData: any;
   metaData: any;
   settings: any;
   mainMenus: any;
 
 };
 
-const Delta = (props: MyProps) => {
 
-  const { settings, mainMenus, deltaData, metaData } = props;
+const GDesign = (props: MyProps) => {
+
+  const { settings, mainMenus, gDesignData, metaData } = props;
 
   const [key, setKey] = useState(null);
-
 
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`
@@ -195,7 +196,7 @@ const Delta = (props: MyProps) => {
 
   return (
     <>
-      {deltaData.map((data, index) => {
+      {gDesignData.map((data, index) => {
         return (
           <div key={index} className='Bc-Coquitlam'>
             <Head>
@@ -213,35 +214,36 @@ const Delta = (props: MyProps) => {
               })}
             </Head>
             <Header settings={settings} mainMenus={mainMenus} />
+
             <main className="content">
-              {data?.Delta?.bannerTitle == null ? "" : (
+              {data?.GDesign?.bannerTitle == null ? "" : (
                 <Hero
-                  title={data?.Delta?.bannerTitle}
-                  heading={data?.Delta?.bannerHeading}
-                  description={data?.Delta?.bannerDescription}
-                  bgImage={data?.Delta?.bannerImage?.sourceUrl}
+                  title={data?.GDesign?.bannerTitle}
+                  heading={data?.GDesign?.bannerHeading}
+                  description={data?.GDesign?.bannerDescription}
+                  bgImage={data?.GDesign?.bannerImage?.sourceUrl}
                 />
               )}
 
               <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                   <Col md={5}>
-                    <p>{data?.Delta?.bannerTitle?.split(" ")[0]} <span>{data?.Delta?.bannerTitle?.split(" ")[1]}</span></p>
+                    <p>{data?.GDesign?.bannerTitle?.split(" ")[0]} <span>{data?.GDesign?.bannerTitle?.split(" ")[1]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.Delta?.bannerDescription}</span>
+                    <span>{data?.GDesign?.bannerDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
                   <Col md={7}>
-                    <div dangerouslySetInnerHTML={{ __html: data?.Delta?.aboutText }} >
+                    <div dangerouslySetInnerHTML={{ __html: data?.GDesign?.aboutText }} >
                     </div>
                   </Col>
                   <Col md={5}>
                     <Image
-                      src={data?.Delta?.aboutImage?.sourceUrl}
+                      src={data?.GDesign?.aboutImage?.sourceUrl}
                       loader={myLoader}
-                      alt={data?.Delta?.aboutImage?.altText}
+                      alt={data?.GDesign?.aboutImage?.altText}
                       width="100%"
                       height="90"
                       layout="responsive"
@@ -249,7 +251,7 @@ const Delta = (props: MyProps) => {
                     />
                   </Col>
                 </Row>
-                {data?.Delta?.slider == null ? "" : (
+                {data?.GDesign?.slider == null ? "" : (
                   <Row className='application-slider'>
 
                     <Carousel
@@ -258,7 +260,7 @@ const Delta = (props: MyProps) => {
                       responsive={responsive}
                     >
 
-                      {data?.Delta?.slider.map((slide, a) => {
+                      {data?.GDesign?.slider.map((slide, a) => {
                         return (
                           <div key={a} className="application-slide text-center">
                             <span>{slide?.title}</span>
@@ -273,58 +275,58 @@ const Delta = (props: MyProps) => {
 
                 <Row className="product-service">
                   <Col className='mb-5' md={12}>
-                    <h2 className='text-center'>{data?.Delta?.productsTitle}</h2>
+                    <h2 className='text-center'>{data?.GDesign?.productsTitle}</h2>
                   </Col>
                   <Col md={3}>
                     <span
-                      dangerouslySetInnerHTML={{ __html: data?.Delta?.productsLeftText }}
+                      dangerouslySetInnerHTML={{ __html: data?.GDesign?.productsLeftText }}
                     ></span>
 
                   </Col>
                   <Col md={6}>
                     <Image
-                      src={data?.Delta?.productsImage?.sourceUrl}
+                      src={data?.GDesign?.productsImage?.sourceUrl}
                       loader={myLoader}
-                      alt={data?.Delta?.productsImage?.altText}
+                      alt={data?.GDesign?.productsImage?.altText}
                       width="190"
-                      height="150"
+                      height="120"
                       layout="responsive"
                       objectFit="contain"
                     />
                   </Col>
                   <Col md={3}>
                     <span
-                      dangerouslySetInnerHTML={{ __html: data?.Delta?.productsRightText }}
+                      dangerouslySetInnerHTML={{ __html: data?.GDesign?.productsRightText }}
                     ></span>
                   </Col>
                 </Row>
                 <Row className='apply-step'>
                   <Col md={4}>
-                    {data?.Delta?.firstApplyStepTitle == null ? "" : (
+                    {data?.GDesign?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <p>{data?.Delta?.firstApplyStepTitle}</p>
+                        <p>{data?.GDesign?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
                     )}
                   </Col>
                   <Col md={4}>
-                    {data?.Delta?.secondApplyStepTitle == null ? "" : (
+                    {data?.GDesign?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
                         <p>
-                          <span>{data?.Delta?.secondApplyStepTitle}</span>
+                          <span>{data?.GDesign?.secondApplyStepTitle}</span>
                         </p>
-                        <p>{data?.Delta?.secondApplyStepDescription}</p>
+                        <p>{data?.GDesign?.secondApplyStepDescription}</p>
                       </div>
                     )}
                   </Col>
                   <Col md={4}>
-                    {data?.Delta?.thirdApplyStepTitle == null ? "" : (
+                    {data?.GDesign?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <p>{data?.Delta?.thirdApplyStepTitle}</p>
+                        <p>{data?.GDesign?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -333,11 +335,11 @@ const Delta = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <p className="headering-title" >{data?.Delta?.brokerTitle}</p>
-                    <p>{data?.Delta?.description}</p>
+                    <p className='headering-title'>{data?.GDesign?.brokerTitle}</p>
+                    <p>{data?.GDesign?.brokerDescription}</p>
                   </Col>
                 </Row>
-                {data.Delta.renovation == null ? "" : (
+                {data.GDesign.renovation == null ? "" : (
                   <Row className="renovation-row">
                     <Tabs
                       id="controlled-tab-example"
@@ -345,7 +347,7 @@ const Delta = (props: MyProps) => {
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {data.Delta.renovation.map((tab, item) => {
+                      {data.GDesign.renovation.map((tab, item) => {
                         return (
                           <Tab key={item} eventKey={item.toString()} title={tab.title}>
                             <div
@@ -360,13 +362,12 @@ const Delta = (props: MyProps) => {
                 )}
                 <Row className='broker-coquitlam'>
                   <Col>
-                    <h2>{data?.Delta?.title}</h2>
-                    <p>{data?.Delta?.description}</p>
-                    {data?.Delta?.brokerLink == null ? "" : (
-                      <Link href={data?.Delta?.brokerLink?.url}>
-                        <span>
-                          Read More <FontAwesomeIcon icon={faChevronRight} />
-                        </span>
+                    <h2>{data?.GDesign?.
+                      brokerTitle}</h2>
+                    <p>{data?.GDesign?.brokerDescription}</p>
+                    {data?.GDesign?.brokerLink == null ? "" : (
+                      <Link href={data?.GDesign?.brokerLink?.url}>
+                        <span>Contact Us <FontAwesomeIcon icon={faChevronRight} /></span>
                       </Link>
                     )}
 
@@ -386,4 +387,4 @@ const Delta = (props: MyProps) => {
   );
 };
 
-export default Delta;
+export default GDesign;

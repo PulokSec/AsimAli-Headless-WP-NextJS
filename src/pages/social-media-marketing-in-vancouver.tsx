@@ -2,7 +2,7 @@ import { CTA, Footer, Header, Hero } from 'components';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { client } from 'client';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Nav, NavItem, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -44,7 +44,7 @@ export async function getStaticProps() {
 
   const { data } = await client.query({
     query: gql`query{ 
-      pages(where: {id: 557}) {
+      pages(where: {id: 876}) {
         nodes {
           seo {
             title
@@ -57,46 +57,45 @@ export async function getStaticProps() {
               }
             }
           }
-          coquitlam {
-                  coquitlamBannerTitle
-                  coquitlamBannerHeading
-                  coquitlamBannerDescription
+          SMMarketing {
                   thirdApplyStepTitle
                   secondApplyStepTitle
                   secondApplyStepDescription
-                  mortgageProductsTitle
-                  mortgageProductsRightText
-                  mortgageProductsLeftText
-                  mortgageBrokerTitle
-                  mortgageBrokerDescription
+                  productsTitle
+                  productsRightText
+                  productsLeftText
                   firstApplyStepTitle
-                  brokerCoquitlamTitle
-                  brokerCoquitlamDescription
-                  aboutCoquitlamText
-                  mortgageProductsImage {
+                  brokerTitle
+                  brokerDescription
+                  bannerTitle
+                  bannerHeading
+                  bannerDescription
+                  aboutText
+                  aboutImage {
                     altText
                     sourceUrl
                   }
-                  coquitlamSlider {
-                    title
-                    content
-                  }
-                  coquitlamBannerImage {
+                  bannerImage {
                     altText
                     sourceUrl
                   }
-                  brokerCoquitlamLink {
+                  brokerLink {
                     url
+                    title
                   }
-                  aboutCoquitlamImage {
+                  productsImage {
                     altText
                     sourceUrl
                   }
-                  mortgageRenovation {
+                  renovation {
                     title
                     description
                   }
-                }
+                  slider {
+                    title
+                    content
+                  }
+            }
         }
       }
   
@@ -167,7 +166,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      coquitlamData: data?.pages?.nodes,
+      sMMarketingData: data?.pages?.nodes,
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
@@ -176,7 +175,7 @@ export async function getStaticProps() {
 }
 
 type MyProps = {
-  coquitlamData: any;
+  sMMarketingData: any;
   metaData: any;
   settings: any;
   mainMenus: any;
@@ -184,9 +183,9 @@ type MyProps = {
 };
 
 
-const BcCoquitlam = (props: MyProps) => {
+const SMMarketing = (props: MyProps) => {
 
-  const { settings, mainMenus, coquitlamData, metaData } = props;
+  const { settings, mainMenus, sMMarketingData, metaData } = props;
 
   const [key, setKey] = useState(null);
 
@@ -197,7 +196,7 @@ const BcCoquitlam = (props: MyProps) => {
 
   return (
     <>
-      {coquitlamData.map((data, index) => {
+      {sMMarketingData.map((data, index) => {
         return (
           <div key={index} className='Bc-Coquitlam'>
             <Head>
@@ -215,43 +214,44 @@ const BcCoquitlam = (props: MyProps) => {
               })}
             </Head>
             <Header settings={settings} mainMenus={mainMenus} />
+
             <main className="content">
-              {data?.coquitlam?.coquitlamBannerTitle == null ? "" : (
+              {data?.SMMarketing?.bannerTitle == null ? "" : (
                 <Hero
-                  title={data?.coquitlam?.coquitlamBannerTitle}
-                  heading={data?.coquitlam?.coquitlamBannerHeading}
-                  description={data?.coquitlam?.coquitlamBannerDescription}
-                  bgImage={data?.coquitlam?.coquitlamBannerImage?.sourceUrl}
+                  title={data?.SMMarketing?.bannerTitle}
+                  heading={data?.SMMarketing?.bannerHeading}
+                  description={data?.SMMarketing?.bannerDescription}
+                  bgImage={data?.SMMarketing?.bannerImage?.sourceUrl}
                 />
               )}
 
               <Container className='my-5'>
                 <Row className='refinance-text my-5'>
                   <Col md={5}>
-                    <p>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[0]} <span>{data?.coquitlam?.coquitlamBannerTitle?.split(" ")[1]}</span></p>
+                    <p>{data?.SMMarketing?.bannerTitle?.split(" ")[0]} <span>{data?.SMMarketing?.bannerTitle?.split(" ")[1]} {data?.SMMarketing?.bannerTitle?.split(" ")[2]}</span></p>
                   </Col>
                   <Col md={7}>
-                    <span>{data?.coquitlam?.coquitlamBannerDescription}</span>
+                    <span>{data?.SMMarketing?.bannerDescription}</span>
                   </Col>
                 </Row>
                 <Row className='coquitlam-grid my-5'>
                   <Col md={7}>
-                    <div dangerouslySetInnerHTML={{ __html: data?.coquitlam?.aboutCoquitlamText }} >
+                    <div dangerouslySetInnerHTML={{ __html: data?.SMMarketing?.aboutText }} >
                     </div>
                   </Col>
                   <Col md={5}>
                     <Image
-                      src={data?.coquitlam?.aboutCoquitlamImage?.sourceUrl}
+                      src={data?.SMMarketing?.aboutImage?.sourceUrl}
                       loader={myLoader}
-                      alt={data?.coquitlam?.aboutCoquitlamImage?.altText}
+                      alt={data?.SMMarketing?.aboutImage?.altText}
                       width="100%"
-                      height="120"
+                      height="90"
                       layout="responsive"
                       objectFit="contain"
                     />
                   </Col>
                 </Row>
-                {data?.coquitlam?.coquitlamSlider == null ? "" : (
+                {data?.SMMarketing?.slider == null ? "" : (
                   <Row className='application-slider'>
 
                     <Carousel
@@ -260,7 +260,7 @@ const BcCoquitlam = (props: MyProps) => {
                       responsive={responsive}
                     >
 
-                      {data?.coquitlam?.coquitlamSlider.map((slide, a) => {
+                      {data?.SMMarketing?.slider.map((slide, a) => {
                         return (
                           <div key={a} className="application-slide text-center">
                             <span>{slide?.title}</span>
@@ -275,58 +275,58 @@ const BcCoquitlam = (props: MyProps) => {
 
                 <Row className="product-service">
                   <Col className='mb-5' md={12}>
-                    <h2 className='text-center'>{data?.coquitlam?.mortgageProductsTitle}</h2>
+                    <h2 className='text-center'>{data?.SMMarketing?.productsTitle}</h2>
                   </Col>
                   <Col md={3}>
                     <span
-                      dangerouslySetInnerHTML={{ __html: data?.coquitlam?.mortgageProductsLeftText }}
+                      dangerouslySetInnerHTML={{ __html: data?.SMMarketing?.productsLeftText }}
                     ></span>
 
                   </Col>
                   <Col md={6}>
                     <Image
-                      src={data?.coquitlam?.mortgageProductsImage?.sourceUrl}
+                      src={data?.SMMarketing?.productsImage?.sourceUrl}
                       loader={myLoader}
-                      alt={data?.coquitlam?.mortgageProductsImage?.altText}
+                      alt={data?.SMMarketing?.productsImage?.altText}
                       width="190"
-                      height="150"
+                      height="120"
                       layout="responsive"
                       objectFit="contain"
                     />
                   </Col>
                   <Col md={3}>
                     <span
-                      dangerouslySetInnerHTML={{ __html: data?.coquitlam?.mortgageProductsRightText }}
+                      dangerouslySetInnerHTML={{ __html: data?.SMMarketing?.productsRightText }}
                     ></span>
                   </Col>
                 </Row>
                 <Row className='apply-step'>
                   <Col md={4}>
-                    {data?.coquitlam?.firstApplyStepTitle == null ? "" : (
+                    {data?.SMMarketing?.firstApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>01</span>
-                        <p>{data?.coquitlam?.firstApplyStepTitle}</p>
+                        <p>{data?.SMMarketing?.firstApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
                     )}
                   </Col>
                   <Col md={4}>
-                    {data?.coquitlam?.secondApplyStepTitle == null ? "" : (
+                    {data?.SMMarketing?.secondApplyStepTitle == null ? "" : (
                       <div className="approved">
                         <span>02</span>
-                        <p><span>
-                          {data?.coquitlam?.secondApplyStepTitle}
-                        </span></p>
-                        <p>{data?.coquitlam?.secondApplyStepDescription}</p>
+                        <p>
+                          <span>{data?.SMMarketing?.secondApplyStepTitle}</span>
+                        </p>
+                        <p>{data?.SMMarketing?.secondApplyStepDescription}</p>
                       </div>
                     )}
                   </Col>
                   <Col md={4}>
-                    {data?.coquitlam?.thirdApplyStepTitle == null ? "" : (
+                    {data?.SMMarketing?.thirdApplyStepTitle == null ? "" : (
                       <div className="apply">
                         <span>03</span>
-                        <p>{data?.coquitlam?.thirdApplyStepTitle}</p>
+                        <p>{data?.SMMarketing?.thirdApplyStepTitle}</p>
                         <div className="apply-border">
                         </div>
                       </div>
@@ -335,11 +335,11 @@ const BcCoquitlam = (props: MyProps) => {
                 </Row>
                 <Row className='mortgage-broker'>
                   <Col>
-                    <h2>{data?.coquitlam?.mortgageBrokerTitle}</h2>
-                    <p>{data?.coquitlam?.mortgageBrokerDescription}</p>
+                    <p className='headering-title'>{data?.SMMarketing?.brokerTitle}</p>
+                    <p>{data?.SMMarketing?.brokerDescription}</p>
                   </Col>
                 </Row>
-                {data.coquitlam.mortgageRenovation == null ? "" : (
+                {data.SMMarketing.renovation == null ? "" : (
                   <Row className="renovation-row">
                     <Tabs
                       id="controlled-tab-example"
@@ -347,7 +347,7 @@ const BcCoquitlam = (props: MyProps) => {
                       onSelect={(k) => setKey(k)}
                       className="mb-3 renovation"
                     >
-                      {data.coquitlam.mortgageRenovation.map((tab, item) => {
+                      {data.SMMarketing.renovation.map((tab, item) => {
                         return (
                           <Tab key={item} eventKey={item.toString()} title={tab.title}>
                             <div
@@ -362,14 +362,12 @@ const BcCoquitlam = (props: MyProps) => {
                 )}
                 <Row className='broker-coquitlam'>
                   <Col>
-                    <h2>{data?.coquitlam?.
-                      brokerCoquitlamTitle}</h2>
-                    <p>{data?.coquitlam?.brokerCoquitlamDescription}</p>
-                    {data?.coquitlam?.brokerCoquitlamLink == null ? "" : (
-                      <Link href={data?.coquitlam?.brokerCoquitlamLink?.url}>
-                        <span>
-                          Read More <FontAwesomeIcon icon={faChevronRight} />
-                        </span>
+                    <h2>{data?.SMMarketing?.
+                      brokerTitle}</h2>
+                    <p>{data?.SMMarketing?.brokerDescription}</p>
+                    {data?.SMMarketing?.brokerLink == null ? "" : (
+                      <Link href={data?.SMMarketing?.brokerLink?.url}>
+                        <span>Contact Us <FontAwesomeIcon icon={faChevronRight} /></span>
                       </Link>
                     )}
 
@@ -389,4 +387,4 @@ const BcCoquitlam = (props: MyProps) => {
   );
 };
 
-export default BcCoquitlam;
+export default SMMarketing;
