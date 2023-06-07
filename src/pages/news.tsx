@@ -258,9 +258,9 @@ const News = (props: MyProps) => {
               }
 
               <Container className="my-5 blog-container">
-                <h1 className="my-3">{data?.news.newsBannerTitle}</h1>
+                <h1 className="my-3">{data?.news?.newsBannerTitle}</h1>
                 <div className="row row-cols-1 row-cols-md-3 g-4 items">
-                  {news.map((item, index) => {
+                  {news?.map((item, index) => {
                     return (
                       <div key={index} className="col">
                         <div className="card h-100">
@@ -275,16 +275,16 @@ const News = (props: MyProps) => {
                               alt={item?.featuredImage?.node?.altText} />
                           </div>
                           <div className="card-body">
-                            <Link href={item.uri}><h2 className="card-title">{item?.title}</h2>
+                            <Link href={item?.uri}><h2 className="card-title">{item?.title}</h2>
                             </Link>
                             <span>
 
-                              <Moment format="MMM D, YYYY" >{item.date}</Moment></span>
+                             By Cansoft | <Moment format="MMM D, YYYY" >{item?.date}</Moment></span>
                             {/* <p dangerouslySetInnerHTML={{__html: blog?.content.textContent }}className="card-text my-3"></p> */}
-                            <p className='blog-content'>{item?.content.replace(/(<([^>]+)>)/ig, '')}</p>
+                            <p className='blog-content'>{item?.content?.replace(/(<([^>]+)>)/ig, '')}</p>
                           </div>
                           <div className="card-footers p-3">
-                            <Link href={item.uri}>
+                            <Link href={item?.uri}>
                               <Button className="readMoreBtn" >Read <span>More</span></Button>
                             </Link>
                           </div>

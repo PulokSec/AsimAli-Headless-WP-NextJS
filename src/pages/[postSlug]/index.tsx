@@ -1,20 +1,20 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
+import { client, Post } from 'client';
 import { Footer, Header, Hero } from 'components';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
-import { client, Page as PageType } from 'client';
 import { gql } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import React, { useState, useEffect } from 'react';
 import CustomHeader from 'components/CustomHeader';
 import CustomFooter from 'components/CustomFooter';
-
-
-export interface PageProps {
-  page: PageType | PageType['preview']['node'] | null | undefined;
+import CustomHero from 'components/CustomHero';
+import Moment from 'react-moment';
+export interface PostProps {
+  post: Post | Post['preview']['node'] | null | undefined;
 }
 
-export function PageComponent({ page }: PageProps) {
+export function PostComponent({ post }: PostProps) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const [metaData, setMetaData] = useState([]);
@@ -29,7 +29,7 @@ export function PageComponent({ page }: PageProps) {
     client
       .query({
         query: gql`query{
-        pages(where: {id: ${page.pageId}}) {
+        posts(where: {id: 1}) {
           nodes {
             seo {
               title
@@ -46,10 +46,9 @@ export function PageComponent({ page }: PageProps) {
         }
       }`,
       })
-      .then((result) => setMetaData(result?.data?.pages?.nodes));
+      .then((result) => setMetaData(result?.data?.posts?.nodes));
 
-  }, [page]);
-
+  }, [post]);
 
   return (
     <>
@@ -69,31 +68,30 @@ export function PageComponent({ page }: PageProps) {
       </Head>
       <CustomHeader />
 
-      <Hero
-        title={page?.title()}
-        bgImage={page?.featuredImage?.node.sourceUrl()}
+      <CustomHero
+        title={post?.title()}
+        date={post?.date}
+        bgImage={post?.featuredImage?.node?.sourceUrl()}
       />
-
       <main className="content content-single">
         <div className="wrap">
-          <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
+          <h1>{post?.title()}</h1>
+          <span className='asim-post-meta' >By Cansoft | <Moment format="MMM D, YYYY" >{post.date}</Moment></span>
+          <div dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }} />
         </div>
       </main>
 
       <CustomFooter />
-
     </>
   );
 }
 
 export default function Page() {
-  const { usePage } = client;
-  const page = usePage();
+  const { usePost } = client;
+  const post = usePost();
 
-  return <PageComponent page={page} />;
+  return <PostComponent post={post} />;
 }
-
-
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   return getNextStaticProps(context, {

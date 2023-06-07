@@ -1,8 +1,10 @@
 import React from 'react';
+import Moment from 'react-moment';
 import styles from 'scss/components/Hero.module.scss';
 
 interface Props {
   title: string;
+  date?: string;
   heading?: string;
   description?: string;
   id?: string;
@@ -16,6 +18,7 @@ interface Props {
 
 function CustomHero({
   title = 'Hero Title',
+  date,
   heading,
   description,
   id,
@@ -36,9 +39,11 @@ function CustomHero({
         <div className="hero-title-post">
           <p className="hero-title text-center">
             {title}
-            {/* { title?.split(" ")[0] } 
-            <span>{ title?.split(" ")[1] } { title?.split(" ")[2] }</span> */}
           </p>
+          <p className="hero-title text-center">
+          <span className='asim-post-meta' >By Cansoft | <Moment format="MMM D, YYYY" >{date}</Moment></span>
+          </p>
+
         <div className={styles.intro}>
           <div className={styles.children}>{children}</div>
           {buttonText && buttonURL && (
