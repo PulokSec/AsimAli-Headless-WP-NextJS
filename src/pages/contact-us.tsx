@@ -265,7 +265,7 @@ const Contact = (props: MyProps) => {
                               </select>
                             </div>
 
-                            <div className="col-md-6">
+                            {/* <div className="col-md-6">
                               <label htmlFor="province">Province</label>
                               <select name="province" className="form_control" aria-invalid="false">
                                 <option value="Alberta">Alberta</option>
@@ -282,7 +282,7 @@ const Contact = (props: MyProps) => {
                                 <option value="Saskatchewan">Saskatchewan</option>
                                 <option value="Yukon">Yukon</option>
                               </select>
-                            </div>
+                            </div> */}
                             <div className="col-md-12 mt-3">
                               <input type="text" name="subject" id="subject" placeholder="Subject" />
                             </div>

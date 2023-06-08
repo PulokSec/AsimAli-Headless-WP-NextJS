@@ -162,12 +162,14 @@ function Header(props: MyProps) {
 
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
+          <Navbar.Collapse 
+          // id="navbarScroll"
+          >
 
             <Nav
               className="ms-auto my-2 my-lg-0"
               // style={{ maxHeight: '100px' }}
-              navbarScroll
+              // navbarScroll
             >
               {mainMenus?.map(link => {
                 return (
@@ -188,7 +190,7 @@ function Header(props: MyProps) {
                                     <li
                                       key={submenu.uri}>
                                       <Nav.Link as={Link} href={`${submenu.uri}`} >
-                                        <span className="sublink" onClick={() => (submenu.uri)}>{submenu.label}</span>
+                                        <span className="sublink" onClick={() => (submenu.uri)}>{submenu.label?.toUpperCase()}</span>
                                       </Nav.Link>
                                     </li>
                                   )
