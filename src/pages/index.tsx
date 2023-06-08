@@ -1,12 +1,10 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import React from "react";
 // import { CTA, Footer, Header } from 'components';
 
 const Header = dynamic(() => import("../components/Header"));
 const Footer = dynamic(() => import("../components/Footer"));
 const CTA = dynamic(() => import("../components/CTA"));
-
 const Banner = dynamic(() => import("../components/Banner"));
 const WeHelp = dynamic(() => import("../components/WeHelp"));
 const Team = dynamic(() => import("components/Team"));
@@ -18,10 +16,8 @@ const Gallery = dynamic(() => import("components/Gallery"));
 const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
 const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
 
-import { gql } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import MobileBanner from "components/MobileBanner";
-import PageWrapper from "components/Pagewrapper";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -335,29 +331,27 @@ export default function Page(props: MyProps) {
           );
         })}
       </Head>
-      <PageWrapper>
-        <main className="content">
-          <Header settings={settings} mainMenus={mainMenus} />
-          <div className="desktop-banner">
-            <Banner sliders={sliders} />
-          </div>
-          <div className="mobile-banner">
-            <MobileBanner msliders={msliders} />
-          </div>
-          <WeHelp helps={helps} />
-          <PartnerLogo logos={logos} />
-          <Team teams={teams} />
-          <Meeting meetings={meetings} />
-          <SplitImageLeft splitImagesLeft={splitImagesLeft} />
-          <FlexabilitySlider flexsliders={flexsliders} />
-          <SplitImageRight splitImagesRight={splitImagesRight} />
-          <Gallery images={images} />
-          <FAQ faqsections={faqsections} />
-          <CTA />
-        </main>
+      <main className="content">
+        <Header settings={settings} mainMenus={mainMenus} />
+        <div className="desktop-banner">
+          <Banner sliders={sliders} />
+        </div>
+        <div className="mobile-banner">
+          <MobileBanner msliders={msliders} />
+        </div>
+        <WeHelp helps={helps} />
+        <PartnerLogo logos={logos} />
+        <Team teams={teams} />
+        <Meeting meetings={meetings} />
+        <SplitImageLeft splitImagesLeft={splitImagesLeft} />
+        <FlexabilitySlider flexsliders={flexsliders} />
+        <SplitImageRight splitImagesRight={splitImagesRight} />
+        <Gallery images={images} />
+        <FAQ faqsections={faqsections} />
+        <CTA />
+      </main>
 
-        <Footer settings={settings} mainMenus={mainMenus} />
-      </PageWrapper>
+      <Footer settings={settings} mainMenus={mainMenus} />
     </>
   );
 }

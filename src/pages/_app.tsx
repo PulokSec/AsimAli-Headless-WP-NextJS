@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import Script from "next/script";
 import { TRACKING_ID } from "./../../utils/variables";
+import PageWrapper from 'components/Pagewrapper';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 
@@ -37,7 +38,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         }}
       />
       <FaustProvider client={client} pageProps={pageProps}>
+      <PageWrapper>
         <Component {...pageProps} />
+       </PageWrapper>
       </FaustProvider>
     </>
   );
