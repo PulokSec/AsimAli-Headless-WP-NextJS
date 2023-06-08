@@ -126,11 +126,12 @@ body {
         background: #fff;
         li {
           span.sublink {
-            padding: 13px;
+            padding: 5px;
             display: block;
             cursor: pointer;
-            text-align: center;
+
             font-weight: bold;
+            font-size: 13px;
             margin: 0;
             border-bottom: 2px solid $color-secondary;
             &:hover {
@@ -1736,6 +1737,11 @@ p.testimonials-name {
 }
   .navbar-nav ul {
     flex-direction: column;
+    li{
+      ul.submenu{
+        text-align: left;
+      }
+    }
   }
   h2,
   span {
