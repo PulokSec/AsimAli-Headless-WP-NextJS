@@ -114,7 +114,7 @@ const PartnerLogo = (props: MyProps) => {
                             loader={myLoader}
                             src={singleLogo.sourceUrl}
                             width="100%"
-                            height="15"
+                            height="100%"
                             layout="responsive"
                             objectFit="contain"
                             alt={singleLogo.altText}
