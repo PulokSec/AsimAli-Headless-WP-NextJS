@@ -126,14 +126,14 @@ body {
         background: #fff;
         li {
           span.sublink {
-            padding: 5px;
+            padding: 8px;
             display: block;
             cursor: pointer;
 
             font-weight: bold;
             font-size: 13px;
             margin: 0;
-            border-bottom: 2px solid $color-secondary;
+            // border-bottom: 2px solid $color-secondary;
             &:hover {
               background: $color-secondary;
               color: $color-white;
@@ -168,8 +168,8 @@ body {
       border-bottom: 2px solid $color-secondary;
       color: $color-primary;
       &:before {
-        border-top: 2px solid $color-secondary;
-        border-right: 2px solid $color-secondary;
+        // border-top: 2px solid $color-secondary;
+        // border-right: 2px solid $color-secondary;
         width: 30px;
         height: 30px;
         content: " ";
@@ -423,30 +423,84 @@ footer {
         text-align: right;
       }
     }
-    .footer-menu {
+    // .footer-menu {
+    //   ul{
+    //     margin: 0;
+    //     padding: 0;
+    //     list-style: none;
+    //     display: flex;
+    //     justify-content: center;
+    //     span{
+    //       float: left;
+    //       overflow: hidden;
+    //       margin-right: 15px;
+    //       li{
+    //         span.link{
+    //           &:hover{
+    //             color: #fff !important;
+    //           }
+    //         }
+
+    //       }
+    //       .submenu{
+    //         display: none;
+    //       }
+    //     }
+       
+    //   }
+    // }
+    .footer-menu{
       ul{
-        margin: 0;
-        padding: 0;
         list-style: none;
         display: flex;
         justify-content: center;
-        span{
-          float: left;
-          overflow: hidden;
-          margin-right: 15px;
-          li{
-            span.link{
-              &:hover{
-                color: #fff !important;
-              }
-            }
+    span {
+      position: relative;
+      margin: 0 10px;
+      color: #fff;
+      background: #12143a;
+      &:hover {
+        cursor: pointer;
+        ul.submenu {
+          display: block;
+        }
+      }
+      ul.submenu {
+        display: flex;
+        justify-content: center;
+        text-align: left;
+        position: absolute;
+        right: 10;
+        z-index: 99;
+        width: 240px;
+        display: none;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        background: #12143a;
+        li {
+          span.sublink {
+            padding: 3px;
+            display: block;
+            cursor: pointer;
 
-          }
-          .submenu{
-            display: none;
+            font-weight: bold;
+            font-size: 13px;
+            margin: 0;
+            &:hover {
+              background: $color-secondary;
+              color: $color-white;
+            }
+            &:before {
+              display: none;
+            }
+            &:after {
+              display: none;
+            }
           }
         }
-       
+      }
+    }
       }
     }
 
@@ -1607,6 +1661,14 @@ textarea#comment {
   display: flex;
   align-items: center;
 }
+.service-desc{
+  p{
+    span{
+      text-decoration: underline;
+      color: $color-secondary;
+    }
+  }
+}
 section.meeting_section {
   overflow-x: hidden;
 }
@@ -1731,6 +1793,9 @@ p.testimonials-name {
 }
   .navbar-nav a {
     text-align: center;
+}
+.navbar-nav span.link{
+  text-align: left;
 }
   .wehelp_image video {
     width: 100% !important; 

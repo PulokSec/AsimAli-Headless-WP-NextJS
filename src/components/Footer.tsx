@@ -161,7 +161,7 @@ const Footer = (props: MyProps) => {
                               <span >
 
                                 <Nav.Link href={`${item.url}`} >
-                                  <span className='link' onClick={() => (item.url)}>{item.label}</span>
+                                  <span className='link'>{item.label}</span>
                                 </Nav.Link>
                                 <ul className="submenu">
                                   {item.childItems.nodes.map(submenu => {
@@ -169,7 +169,7 @@ const Footer = (props: MyProps) => {
                                       <li
                                         key={submenu.uri}>
                                         <Nav.Link as={Link} href={`${submenu.uri}`} >
-                                          <span className='link' onClick={() => (submenu.uri)}>{submenu.label}</span>
+                                          <span className='link' >{submenu.label}</span>
                                         </Nav.Link>
                                       </li>
                                     )
