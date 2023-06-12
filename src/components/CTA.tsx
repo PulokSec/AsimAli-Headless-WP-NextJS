@@ -85,7 +85,7 @@ const CTA = () => {
                   objectFit="cover"
                   width={500}
                   height="250"
-
+                  priority={true}
                   />
                </div>
                </div>

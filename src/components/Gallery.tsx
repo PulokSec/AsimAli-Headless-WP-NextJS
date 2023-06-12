@@ -94,6 +94,7 @@ const Gallery = (props: MyProps) => {
                         height="70"
                         layout="responsive"
                         objectFit="contain"
+                        priority={true}
                       />
                     )}
 
@@ -108,6 +109,7 @@ const Gallery = (props: MyProps) => {
                         height="138"
                         layout="responsive"
                         objectFit="contain"
+                        priority={true}
                       />
                     )}
                   </Col>

@@ -128,6 +128,7 @@ const Banner = (props: MyProps) => {
                               height={57}
                               layout="responsive"
                               objectFit="cover"
+                              priority={true}
                             />
 
 

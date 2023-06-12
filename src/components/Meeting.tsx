@@ -77,6 +77,8 @@ const Meeting = (props: MyProps) => {
                           src={meeting?.HomeLandingPage?.meetingSection?.meetingImage?.sourceUrl}
                           width="1920"
                           height="1228"
+                          layout="responsive"
+                          priority={true}
                           alt={meeting?.HomeLandingPage?.meetingSection?.meetingImage?.altText} />
                       </div>
                     </Col>

@@ -73,6 +73,8 @@ const SplitImageRight = (props: MyProps) => {
                         loader={myLoader}
                         width="1556"
                         height="1921"
+                        priority={true}
+                        layout="responsive"
                         alt={splitImage?.HomeLandingPage?.splitImageRightSection?.splitImage?.altText} />
                     </div>
                   </Col>

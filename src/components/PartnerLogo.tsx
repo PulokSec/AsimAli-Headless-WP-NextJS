@@ -118,6 +118,7 @@ const PartnerLogo = (props: MyProps) => {
                             layout="responsive"
                             objectFit="contain"
                             alt={singleLogo.altText}
+                            priority={true}
                           />
                         </div>
                       )

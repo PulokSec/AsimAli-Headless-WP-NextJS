@@ -73,6 +73,7 @@ const FlexabilitySlider = (props: MyProps) => {
                           height="50"
                           layout="responsive"
                           objectFit="cover"
+                          priority={true}
                           alt={slide?.sliderImage?.altText}
                         />
                       </div>

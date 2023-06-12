@@ -12,11 +12,11 @@ import PageWrapper from 'components/Pagewrapper';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 
-  // useEffect(() => {
-  //   if ('serviceWorker' in navigator) {
-  //     navigator.serviceWorker.register('/sw.js');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  }, []);
 
   return (
     <>

@@ -127,6 +127,7 @@ const MobileBanner = (props: MyProps) => {
                                                     height={67}
                                                     layout="responsive"
                                                     objectFit="cover"
+                                                    priority={true}
                                                 />
                                                 {console.log("Home slider Shabbir", slide)}
 
