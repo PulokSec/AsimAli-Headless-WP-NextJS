@@ -62,7 +62,7 @@ const FAQ = (props: MyProps) => {
                     backgroundImage: `url("${faq?.HomeLandingPage?.faqSection?.faqImage?.sourceUrl}")`
                   }}
                   className='faq_section'>
-                  <div className="faq_text">
+                  <div className="faq_text" >
                     <h2><span className="faq-span">{faq?.HomeLandingPage?.faqSection?.faqTitle} </span>
                       <span className="faq-span" dangerouslySetInnerHTML={{ __html: faq?.HomeLandingPage?.faqSection?.faqSubitle }} ></span></h2>
 

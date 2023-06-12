@@ -15,15 +15,7 @@ const MyDocument = () => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(fasd) }}
         /> */}
         </noscript>
-            <link
-              rel="preload"
-              href="https://hf0ak2tn748admnnhp68zwih3.js.wpenginepowered.com/_next/static/media/revicons.ff59b316.woff"
-              crossOrigin="anonymous"
-            />
-            <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap"  />
-            <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" /></noscript>
             
-            <link rel="dns-prefetch" href="https://asimaliprod.wpengine.com" />
             {/* <link type="image/webp" rel="preload" as="image" href="/home-banner.webp" /> */}
 
 

@@ -382,6 +382,7 @@ body {
       }
     }
   }
+  
   .flex-row-reverse {
     .split_image {
       width: 80%;
@@ -423,32 +424,6 @@ footer {
         text-align: right;
       }
     }
-    // .footer-menu {
-    //   ul{
-    //     margin: 0;
-    //     padding: 0;
-    //     list-style: none;
-    //     display: flex;
-    //     justify-content: center;
-    //     span{
-    //       float: left;
-    //       overflow: hidden;
-    //       margin-right: 15px;
-    //       li{
-    //         span.link{
-    //           &:hover{
-    //             color: #fff !important;
-    //           }
-    //         }
-
-    //       }
-    //       .submenu{
-    //         display: none;
-    //       }
-    //     }
-       
-    //   }
-    // }
     .footer-menu{
       ul{
         list-style: none;
@@ -461,6 +436,8 @@ footer {
       background: #12143a;
       &:hover {
         cursor: pointer;
+        text-decoration: underline;
+        color: $color-secondary;
         ul.submenu {
           display: block;
         }
@@ -1685,6 +1662,58 @@ p.testimonials-name {
   height: 100%!important;
   box-shadow: -1px -3px 12px -5px #000;
 }
+.review {
+  .react-multiple-carousel__arrow {
+    background-color: transparent;
+    &:before {
+      color: $color-secondary;
+    }
+    &:hover {
+      background: transparent;
+    }
+  }
+  .react-multiple-carousel__arrow--left {
+    left: calc(0% + -15px);
+  }
+  .react-multiple-carousel__arrow--right {
+    right: calc(0% + -15px);
+  }
+}
+q.review-content {
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+p.review-name {
+  font-size: 15px;
+  margin-top: 15px;
+  color: $color-secondary;
+  font-weight: bold;
+}
+.review-carousel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.review-box {
+  margin-left: 25px;
+  height: 220px!important;
+  width: 380px !important;
+  box-shadow: -1px -3px 4px -5px #000;
+}
+.review-text{
+  text-align: center;
+  color:#f0b254;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  &:hover{
+    color: $color-secondary;
+    text-decoration: underline;
+  }
+}
 .Bc-Coquitlam .broker-coquitlam span svg {
   width: 10px;
 }
@@ -1902,7 +1931,11 @@ p.testimonials-name {
 }
 
 @media all and (max-width: 540px) {
-  
+  .review-box {
+    margin-left: 0px;
+    height: 220px!important;
+    width: 360px !important;
+  }
   .carousel-fade .carousel-item img{
     height: 450px;
   }
@@ -1975,10 +2008,15 @@ p.testimonials-name {
     background-size: cover;
     .faq_text {
       text-align: center;
+      background-color: rgba(0, 0, 0, 0.45);
+      width: 100%;
       left: 0;
       top: 30px;
       position: static;
       margin: auto;
+    }
+    span.faq-span{
+      color: #fff;
     }
   }
  

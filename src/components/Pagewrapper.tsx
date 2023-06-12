@@ -7,7 +7,7 @@ export default function PageWrapper({ children }) {
   const [showTopBtn, setShowTopBtn] = useState(false);
     useEffect(() => {
       typeof window !== 'undefined' && window.addEventListener("scroll", () => {
-            if (window.scrollY > 400) {
+            if (window.scrollY > 1000) {
                 setShowTopBtn(true);
             } else {
                 setShowTopBtn(false);
@@ -34,9 +34,10 @@ export default function PageWrapper({ children }) {
             bottom: "20px",
             right: "20px",
             border: "none",
+            backgroundColor: "#f0b254",
+            color: "#12143a",
           }}
           className="btn-floating"
-          color="secondary"
           size="lg"
         >
           <FontAwesomeIcon icon={faArrowUp} bounce />

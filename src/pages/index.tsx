@@ -18,6 +18,7 @@ const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
 
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import MobileBanner from "components/MobileBanner";
+import ClientReviews from "components/ClientReviews";
 
 export async function getStaticProps() {
   const client = new ApolloClient({
@@ -246,6 +247,39 @@ export async function getStaticProps() {
       }
     `,
   });
+  const reviews = await client.query({
+    query: gql`query{ 
+      pages(where: {id: 1370}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+          }
+     
+          Testimonials {
+                  bannerTitle
+                  bannerHeading
+                  bannerDescription
+                  bannerImage {
+                    altText
+                    sourceUrl
+                  }
+                  sectionTitle
+                  testimonials {
+                    testimonial
+                    clientName
+                  }
+            }
+        }
+      }
+  }`,});
 
   return {
     props: {
@@ -263,6 +297,7 @@ export async function getStaticProps() {
       splitImagesRight: data?.pages?.nodes,
       images: data?.pages?.nodes,
       faqsections: data?.pages?.nodes,
+      reviewsData: reviews?.data?.pages?.nodes[0]?.Testimonials,
     },
   };
 }
@@ -282,6 +317,7 @@ type MyProps = {
   splitImagesRight: any;
   images: any;
   faqsections: any;
+  reviewsData: any;
 };
 
 export default function Page(props: MyProps) {
@@ -300,8 +336,9 @@ export default function Page(props: MyProps) {
     splitImagesRight,
     images,
     faqsections,
+    reviewsData,
   } = props;
-
+console.log(reviewsData);
   return (
     <>
       <Head>
@@ -347,6 +384,7 @@ export default function Page(props: MyProps) {
         <FlexabilitySlider flexsliders={flexsliders} />
         <SplitImageRight splitImagesRight={splitImagesRight} />
         <Gallery images={images} />
+        <ClientReviews reviews={reviewsData} />
         <FAQ faqsections={faqsections} />
         <CTA />
       </main>
