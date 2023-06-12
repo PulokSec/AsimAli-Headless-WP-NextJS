@@ -62,18 +62,19 @@ const WeHelp = (props: MyProps) => {
               <section className='wehelp_section'>
                 <Container>
                   <Row >
-                    <Col lg={6} >
+                    <Col lg={5} >
                     <div className="split_image">
                       <Image
                         src={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl}
                         loader={myLoader}
-                        width="500"
-                        height="700"
+                        width="300"
+                        height="400"
                         layout="responsive"
                         priority={true}
                         alt={help?.HomeLandingPage?.weHelpSection?.helpImage?.mediaItemUrl} />
                     </div>
                     </Col>
+                    <Col lg={1}/>
                     <Col lg={6} >
                       <div className="wehelp_text">
                         <p className='wehelp_title' dangerouslySetInnerHTML={{ __html: help?.HomeLandingPage?.weHelpSection?.helpTitle }} ></p>
