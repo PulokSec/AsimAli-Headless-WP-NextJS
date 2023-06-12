@@ -83,8 +83,8 @@ const CTA = () => {
                   alt='Logo' 
                   layout="responsive"
                   objectFit="cover"
-                  width={500}
-                  height="250"
+                  width={400}
+                  height={200}
                   priority={true}
                   />
                </div>
