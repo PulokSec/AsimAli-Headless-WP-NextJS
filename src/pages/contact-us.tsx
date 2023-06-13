@@ -116,7 +116,7 @@ export async function getStaticProps() {
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
-    },
+    },revalidate: 10,
   };
 }
 

@@ -2,19 +2,58 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 // import { CTA, Footer, Header } from 'components';
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import CTA from "../components/CTA";
-import Banner from "../components/Banner";
-import WeHelp from "../components/WeHelp";
-import Team from "components/Team";
-import Meeting from "components/Meeting";
-import PartnerLogo from "components/PartnerLogo";
-import SplitImageLeft from "../components/SplitImageLeft";
-import FAQ from "components/FAQ";
-import Gallery from "components/Gallery";
-import FlexabilitySlider from "components/FlexabilitySlider";
-import SplitImageRight from "../components/SplitImageRight";
+const Header = dynamic(() => import("../components/Header")
+, {
+  ssr: false,
+});
+const Footer = dynamic(() => import("../components/Footer")
+, {
+  ssr: false,
+});
+const CTA = dynamic(() => import("../components/CTA")
+, {
+  ssr: false,
+});
+const Banner = dynamic(() => import("../components/Banner")
+, {
+  ssr: false,
+});
+const WeHelp = dynamic(() => import("../components/WeHelp")
+, {
+  ssr: false,
+});
+const Team = dynamic(() => import("components/Team")
+, {
+  ssr: false,
+});
+const Meeting = dynamic(() => import("components/Meeting")
+, {
+  ssr: false,
+});
+const PartnerLogo = dynamic(() => import("components/PartnerLogo")
+, {
+  ssr: false,
+});
+const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft")
+, {
+  ssr: false,
+});
+const FAQ = dynamic(() => import("components/FAQ")
+, {
+  ssr: false,
+});
+const Gallery = dynamic(() => import("components/Gallery")
+, {
+  ssr: false,
+});
+const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider")
+, {
+  ssr: false,
+});
+const SplitImageRight = dynamic(() => import("../components/SplitImageRight")
+, {
+  ssr: false,
+});
 
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import MobileBanner from "components/MobileBanner";
@@ -298,7 +337,7 @@ export async function getStaticProps() {
       images: data?.pages?.nodes,
       faqsections: data?.pages?.nodes,
       reviewsData: reviews?.data?.pages?.nodes[0]?.Testimonials,
-    },
+    },revalidate: 10,
   };
 }
 
