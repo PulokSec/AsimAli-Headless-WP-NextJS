@@ -100,7 +100,7 @@ const router = useRouter();
                     <div className="review-body">
                 <div className="review-img">
                 <Image 
-                  src={userLogo}
+                  src={review?.client_image ? review?.client_image : userLogo}
                   loader={myLoader}  
                   style={{zIndex: 0}} 
                   alt='Logo' 
