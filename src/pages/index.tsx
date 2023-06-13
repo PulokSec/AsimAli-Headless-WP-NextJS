@@ -2,19 +2,58 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 // import { CTA, Footer, Header } from 'components';
 
-const Header = dynamic(() => import("../components/Header"));
-const Footer = dynamic(() => import("../components/Footer"));
-const CTA = dynamic(() => import("../components/CTA"));
-const Banner = dynamic(() => import("../components/Banner"));
-const WeHelp = dynamic(() => import("../components/WeHelp"));
-const Team = dynamic(() => import("components/Team"));
-const Meeting = dynamic(() => import("components/Meeting"));
-const PartnerLogo = dynamic(() => import("components/PartnerLogo"));
-const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft"));
-const FAQ = dynamic(() => import("components/FAQ"));
-const Gallery = dynamic(() => import("components/Gallery"));
-const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
-const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
+const Header = dynamic(() => import("../components/Header")
+, {
+  ssr: false,
+});
+const Footer = dynamic(() => import("../components/Footer")
+, {
+  ssr: false,
+});
+const CTA = dynamic(() => import("../components/CTA")
+, {
+  ssr: false,
+});
+const Banner = dynamic(() => import("../components/Banner")
+, {
+  ssr: false,
+});
+const WeHelp = dynamic(() => import("../components/WeHelp")
+, {
+  ssr: false,
+});
+const Team = dynamic(() => import("components/Team")
+, {
+  ssr: false,
+});
+const Meeting = dynamic(() => import("components/Meeting")
+, {
+  ssr: false,
+});
+const PartnerLogo = dynamic(() => import("components/PartnerLogo")
+, {
+  ssr: false,
+});
+const SplitImageLeft = dynamic(() => import("../components/SplitImageLeft")
+, {
+  ssr: false,
+});
+const FAQ = dynamic(() => import("components/FAQ")
+, {
+  ssr: false,
+});
+const Gallery = dynamic(() => import("components/Gallery")
+, {
+  ssr: false,
+});
+const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider")
+, {
+  ssr: false,
+});
+const SplitImageRight = dynamic(() => import("../components/SplitImageRight")
+, {
+  ssr: false,
+});
 
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import MobileBanner from "components/MobileBanner";
