@@ -2,19 +2,9 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 // import { CTA, Footer, Header } from 'components';
 
-const Header = dynamic(() => import("../components/Header")
-, {
-  ssr: false,
-});
-const Footer = dynamic(() => import("../components/Footer")
-, {
-  ssr: false,
-});
+import Header from "../components/Header";
+import Banner from "../components/Banner";
 const CTA = dynamic(() => import("../components/CTA")
-, {
-  ssr: false,
-});
-const Banner = dynamic(() => import("../components/Banner")
 , {
   ssr: false,
 });
@@ -46,6 +36,11 @@ const Gallery = dynamic(() => import("components/Gallery")
 , {
   ssr: false,
 });
+const Footer = dynamic(() => import("../components/Footer")
+, {
+  ssr: false,
+});
+
 const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider")
 , {
   ssr: false,
@@ -337,7 +332,7 @@ export async function getStaticProps() {
       images: data?.pages?.nodes,
       faqsections: data?.pages?.nodes,
       reviewsData: reviews?.data?.pages?.nodes[0]?.Testimonials,
-    },revalidate: 10,
+    },
   };
 }
 
