@@ -2,13 +2,13 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import Image from 'next/image';
+import userLogo from "../../public/images/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { Container } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import userLogo from "../../public/images/user.png";
 
 const CustomRightArrow = ({ onClick, ...rest }: any) => {
   const {
@@ -89,8 +89,7 @@ const router = useRouter();
         >
           {reviews?.testimonials?.map((review: any, index: number) => {
             return (
-              // <div key={index}>
-                <div key={index} className="review-box card ml-5">
+              <div key={index} className="review-box card ml-5">
                   <div className="card-body">
                     <div>
                     <q className="review-content">
@@ -119,7 +118,6 @@ const router = useRouter();
               </div>
                   </div>
                 </div>
-              // </div>
             );
           })}
         </Carousel>

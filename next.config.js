@@ -18,8 +18,7 @@ module.exports = withOffline ( withFaust ( withPWA({
   experimental: {
     images: {
       optimized: true,
-    },
-    granularChunks: true,
+    }
   },
   async headers() {
     return [

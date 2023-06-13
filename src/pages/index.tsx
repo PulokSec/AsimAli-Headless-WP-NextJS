@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { gql } from "@apollo/client";
 // import { CTA, Footer, Header } from 'components';
-import Banner from "../components/Banner";
-import Header from "../components/Header";
-import { client } from "../lib/apollo";
+
+const Header = dynamic(() => import("../components/Header"));
+const Footer = dynamic(() => import("../components/Footer"));
 const CTA = dynamic(() => import("../components/CTA"));
+const Banner = dynamic(() => import("../components/Banner"));
 const WeHelp = dynamic(() => import("../components/WeHelp"));
 const Team = dynamic(() => import("components/Team"));
 const Meeting = dynamic(() => import("components/Meeting"));
@@ -15,12 +15,17 @@ const FAQ = dynamic(() => import("components/FAQ"));
 const Gallery = dynamic(() => import("components/Gallery"));
 const FlexabilitySlider = dynamic(() => import("components/FlexabilitySlider"));
 const SplitImageRight = dynamic(() => import("../components/SplitImageRight"));
-const Footer = dynamic(() => import("../components/Footer"));
 
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import MobileBanner from "components/MobileBanner";
+import ClientReviews from "components/ClientReviews";
 
-const MobileBanner = dynamic(() => import("components/MobileBanner"));
-const ClientReviews = dynamic(() => import("components/ClientReviews"));
 export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+    cache: new InMemoryCache(),
+  });
+
   const { data } = await client.query({
     query: gql`
       query {
@@ -243,41 +248,38 @@ export async function getStaticProps() {
     `,
   });
   const reviews = await client.query({
-    query: gql`
-      query {
-        pages(where: { id: 1370 }) {
-          nodes {
-            seo {
-              title
-              description
-              canonicalUrl
-              focusKeywords
-              openGraph {
-                image {
-                  url
-                }
-              }
-            }
-
-            Testimonials {
-              bannerTitle
-              bannerHeading
-              bannerDescription
-              bannerImage {
-                altText
-                sourceUrl
-              }
-              sectionTitle
-              testimonials {
-                testimonial
-                clientName
+    query: gql`query{ 
+      pages(where: {id: 1370}) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
               }
             }
           }
+     
+          Testimonials {
+                  bannerTitle
+                  bannerHeading
+                  bannerDescription
+                  bannerImage {
+                    altText
+                    sourceUrl
+                  }
+                  sectionTitle
+                  testimonials {
+                    testimonial
+                    clientName
+                  }
+            }
         }
       }
-    `,
-  });
+  }`,});
 
   return {
     props: {
@@ -297,7 +299,6 @@ export async function getStaticProps() {
       faqsections: data?.pages?.nodes,
       reviewsData: reviews?.data?.pages?.nodes[0]?.Testimonials,
     },
-    revalidate: 10,
   };
 }
 
@@ -337,7 +338,7 @@ export default function Page(props: MyProps) {
     faqsections,
     reviewsData,
   } = props;
-  console.log(reviewsData);
+console.log(reviewsData);
   return (
     <>
       <Head>
