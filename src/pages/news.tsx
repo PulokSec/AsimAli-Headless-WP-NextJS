@@ -1,106 +1,100 @@
-import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
-import { Header, Footer, Hero } from '../components';
-import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { Button, Container } from 'react-bootstrap';
-import Link from 'next/link';
-import Moment from 'react-moment';
-
-
+import { gql } from "@apollo/client";
+import { client } from "lib/apollo";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button, Container } from "react-bootstrap";
+import Moment from "react-moment";
+import { Footer, Header, Hero } from "../components";
 
 export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
   const { data } = await client.query({
-    query: gql`query{ 
-      pages(where: {id: 250}) {
-              nodes {
-                seo {
-                  title
-                  description
-                  canonicalUrl
-                  focusKeywords
-                  openGraph {
-                    image {
-                      url
-                    }
-                  }
-                }
-                news {
-                  newsBannerTitle
-                  newsBannerBackgroundImage {
-                    altText
-                    sourceUrl
-                  }
+    query: gql`
+      query {
+        pages(where: { id: 250 }) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
                 }
               }
-      }
-      settingsOptions {
-      AsimOptions {
-        headerSettings {
-          uploadLogo {
-            sourceUrl
-            altText
+            }
+            news {
+              newsBannerTitle
+              newsBannerBackgroundImage {
+                altText
+                sourceUrl
+              }
+            }
           }
         }
-        footerSettings {
-        socialUrl {
-          facebook
-          tiktok
-          linkedin
-          instagram
-        }
-        copyrightText
-        footerLeftWidget {
-          title
-          phoneNumber
-          emailAddress
-        }
-        footerLogoSection {
-          logoText
-          logoUpload {
-            altText
-            sourceUrl
+        settingsOptions {
+          AsimOptions {
+            headerSettings {
+              uploadLogo {
+                sourceUrl
+                altText
+              }
+            }
+            footerSettings {
+              socialUrl {
+                facebook
+                tiktok
+                linkedin
+                instagram
+              }
+              copyrightText
+              footerLeftWidget {
+                title
+                phoneNumber
+                emailAddress
+              }
+              footerLogoSection {
+                logoText
+                logoUpload {
+                  altText
+                  sourceUrl
+                }
+              }
+              footerRightWidget {
+                title
+                address
+              }
+            }
           }
         }
-        footerRightWidget {
-          title
-          address
-        }
-      }
-   
-      }
-    }
 
-    menus(where: {location: PRIMARY}) {
-      nodes {
-        name
-        slug
-        menuItems(first: 50){
+        menus(where: { location: PRIMARY }) {
           nodes {
-            url
-            target
-            parentId
-            label
-            cssClasses
-            description
-            id
-            childItems {
+            name
+            slug
+            menuItems(first: 50) {
               nodes {
-                uri
+                url
+                target
+                parentId
                 label
+                cssClasses
+                description
+                id
+                childItems {
+                  nodes {
+                    uri
+                    label
+                  }
+                }
               }
             }
           }
         }
       }
-    }
-  }`,
+    `,
   });
 
   return {
@@ -109,7 +103,8 @@ export async function getStaticProps() {
       metaData: data?.pages?.nodes,
       settings: data?.settingsOptions?.AsimOptions,
       mainMenus: data?.menus?.nodes,
-    },revalidate: 10,
+    },
+    revalidate: 10,
   };
 }
 
@@ -118,12 +113,9 @@ type MyProps = {
   metaData: any;
   settings: any;
   mainMenus: any;
-
 };
 
-
 const News = (props: MyProps) => {
-
   const { newsData, metaData, settings, mainMenus } = props;
 
   const [news, setNews] = useState([]);
@@ -133,19 +125,12 @@ const News = (props: MyProps) => {
   const [page, setPage] = useState(0);
   const size = 6;
 
-
-
-
   useEffect(() => {
-    const client = new ApolloClient({
-      uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
-      cache: new InMemoryCache(),
-    });
     client
       .query({
         query: gql`
-          query{
-            posts (where: {offsetPagination: {size: 10000 }}) {
+          query {
+            posts(where: { offsetPagination: { size: 10000 } }) {
               nodes {
                 title
                 featuredImage {
@@ -165,20 +150,15 @@ const News = (props: MyProps) => {
                 }
               }
             }
-          }`,
+          }
+        `,
       })
       .then((result) => {
-
         const count = result?.data?.posts?.nodes.length;
 
         const pageNumber = Math.ceil(count / size);
         setPageCount(pageNumber);
-
-
-
-      }
-
-      );
+      });
     const offset = size * page;
     client
       .query({
@@ -209,19 +189,12 @@ const News = (props: MyProps) => {
       .then((result) => {
         seIsLoading(false);
         setNews(result?.data?.posts?.nodes);
-
-      }
-
-      );
-
-
-
+      });
   }, [page]);
 
-
   const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
+    return `${src}?w=${width}&q=${quality || 75}`;
+  };
   return (
     <div>
       <Head>
@@ -232,10 +205,16 @@ const News = (props: MyProps) => {
               <meta name="description" content={meta?.seo?.description} />
               <link rel="canonical" href={meta?.seo?.canonicalUrl} />
               <meta property="og:title" content={meta?.seo?.title} />
-              <meta property="og:description" content={meta?.seo?.description} />
-              <meta property="og:image" content={meta?.seo?.openGraph?.image?.url} />
+              <meta
+                property="og:description"
+                content={meta?.seo?.description}
+              />
+              <meta
+                property="og:image"
+                content={meta?.seo?.openGraph?.image?.url}
+              />
             </>
-          )
+          );
         })}
       </Head>
       <Header settings={settings} mainMenus={mainMenus} />
@@ -249,13 +228,13 @@ const News = (props: MyProps) => {
                 bgImage={data?.news?.newsBannerBackgroundImage?.sourceUrl}
               />
 
-              {isLoading &&
+              {isLoading && (
                 <div className="text-center py-5">
                   <div className="spinner-border text-dark" role="status">
                     <span className="visually-hidden">Loading...</span>
                   </div>
                 </div>
-              }
+              )}
 
               <Container className="my-5 blog-container">
                 <h1 className="my-3">{data?.news?.newsBannerTitle}</h1>
@@ -272,50 +251,52 @@ const News = (props: MyProps) => {
                               height="65"
                               layout="responsive"
                               objectFit="contain"
-                              alt={item?.featuredImage?.node?.altText} />
+                              alt={item?.featuredImage?.node?.altText}
+                            />
                           </div>
                           <div className="card-body">
-                            <Link href={item?.uri}><h2 className="card-title">{item?.title}</h2>
+                            <Link href={item?.uri}>
+                              <h2 className="card-title">{item?.title}</h2>
                             </Link>
                             <span>
-
-                             By Cansoft | <Moment format="MMM D, YYYY" >{item?.date}</Moment></span>
+                              By Cansoft |{" "}
+                              <Moment format="MMM D, YYYY">{item?.date}</Moment>
+                            </span>
                             {/* <p dangerouslySetInnerHTML={{__html: blog?.content.textContent }}className="card-text my-3"></p> */}
-                            <p className='blog-content'>{item?.content?.replace(/(<([^>]+)>)/ig, '')}</p>
+                            <p className="blog-content">
+                              {item?.content?.replace(/(<([^>]+)>)/gi, "")}
+                            </p>
                           </div>
                           <div className="card-footers p-3">
                             <Link href={item?.uri}>
-                              <Button className="readMoreBtn" >Read <span>More</span></Button>
+                              <Button className="readMoreBtn">
+                                Read <span>More</span>
+                              </Button>
                             </Link>
                           </div>
                         </div>
                       </div>
-
-                    )
+                    );
                   })}
-
-
-
                 </div>
                 <div className="pagination">
-                  {
-                    [...Array(pageCount).keys()].map((number) => <Button
-                      className={number == page ? "contactBtn selected" : 'contactBtn'}
+                  {[...Array(pageCount).keys()].map((number) => (
+                    <Button
+                      className={
+                        number == page ? "contactBtn selected" : "contactBtn"
+                      }
                       key={number}
                       onClick={() => setPage(number)}
-                    >{number + 1}
-                    </Button>)
-                  }
+                    >
+                      {number + 1}
+                    </Button>
+                  ))}
                 </div>
               </Container>
-
             </main>
-
           </div>
-        )
+        );
       })}
-
-
 
       <Footer settings={settings} mainMenus={mainMenus} />
     </div>
